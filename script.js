@@ -67,7 +67,7 @@ faqItems.forEach((item) => {
   });
 });
 
-// Video Modal Functionality
+// Video Modal Functionality - FIXED VERSION
 const watchDemoBtn = document.getElementById('watchDemoBtn');
 const playButton = document.getElementById('playButton');
 const videoModal = document.getElementById('videoModal');
@@ -75,41 +75,81 @@ const closeModal = document.getElementById('closeModal');
 const videoModalBackdrop = document.getElementById('videoModalBackdrop');
 const modalVideo = document.getElementById('modalVideo');
 
+// Inline video elements
+const videoContainer = document.getElementById('videoContainer');
+const videoOverlay = document.getElementById('videoOverlay');
+const demoVideo = document.getElementById('demoVideo');
+
+const videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+
 function openVideoModal() {
   videoModal.classList.add('active');
   document.body.style.overflow = 'hidden';
-  // Replace with your actual demo video URL
-  modalVideo.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+  // Set the video source with autoplay
+  modalVideo.src = videoUrl + '?autoplay=1';
 }
 
 function closeVideoModal() {
   videoModal.classList.remove('active');
   document.body.style.overflow = '';
+  // Stop the video by removing the source
   modalVideo.src = '';
 }
 
-watchDemoBtn.addEventListener('click', openVideoModal);
-playButton.addEventListener('click', openVideoModal);
-closeModal.addEventListener('click', closeVideoModal);
-videoModalBackdrop.addEventListener('click', closeVideoModal);
+// Event listeners for modal video
+if (watchDemoBtn) {
+  watchDemoBtn.addEventListener('click', openVideoModal);
+}
+if (closeModal) {
+  closeModal.addEventListener('click', closeVideoModal);
+}
+if (videoModalBackdrop) {
+  videoModalBackdrop.addEventListener('click', closeVideoModal);
+}
 
 // Close modal on Escape key
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+  if (
+    e.key === 'Escape' &&
+    videoModal &&
+    videoModal.classList.contains('active')
+  ) {
     closeVideoModal();
   }
 });
 
-// Inline Video Play
-const videoContainer = document.getElementById('videoContainer');
-const videoOverlay = document.getElementById('videoOverlay');
+// Inline Video Play - SEPARATE FUNCTIONALITY
+if (playButton) {
+  playButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-playButton.addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent triggering the modal
-  const videoPlaceholder = videoContainer.querySelector('.video-placeholder');
-  videoPlaceholder.style.display = 'none';
-  videoOverlay.style.display = 'block';
-});
+    const videoPlaceholder = videoContainer.querySelector('.video-placeholder');
+    if (videoPlaceholder) {
+      videoPlaceholder.style.display = 'none';
+    }
+    if (videoOverlay) {
+      videoOverlay.style.display = 'block';
+    }
+
+    // Set the video source for inline player
+    if (demoVideo) {
+      demoVideo.src = videoUrl + '?autoplay=1';
+    }
+  });
+}
+
+// Reset inline video when modal is closed (additional safety)
+if (videoModal) {
+  videoModal.addEventListener('transitionend', function (e) {
+    if (!videoModal.classList.contains('active') && videoOverlay) {
+      // Reset inline video if needed
+      if (demoVideo) {
+        demoVideo.src = '';
+      }
+    }
+  });
+}
 
 // Scroll Animations
 const observerOptions = {
@@ -264,7 +304,7 @@ window.addEventListener('scroll', () => {
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Mark.io landing page loaded');
+  console.log('SignTry landing page loaded');
 
   // Add smooth reveal animation to hero content
   const heroContent = document.querySelector('.hero-content');
@@ -274,6 +314,50 @@ document.addEventListener('DOMContentLoaded', () => {
       heroContent.style.transform = 'translateY(0)';
     }, 100);
   }
+
+  // Billing Toggle
+  const billingToggle = document.getElementById('billing-toggle');
+  if (billingToggle) {
+    billingToggle.addEventListener('change', function () {
+      if (this.checked) {
+        document.body.classList.add('yearly-billing');
+      } else {
+        document.body.classList.remove('yearly-billing');
+      }
+    });
+  }
+
+  // Screenshot tabs functionality - MOVED INSIDE DOMContentLoaded
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      console.log('Tab clicked:', button.getAttribute('data-tab'));
+
+      // Remove active class from all buttons and contents
+      tabButtons.forEach((btn) => btn.classList.remove('active'));
+      tabContents.forEach((content) => content.classList.remove('active'));
+
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      // Show corresponding content
+      const tabId = button.getAttribute('data-tab') + '-tab';
+      const targetTab = document.getElementById(tabId);
+
+      if (targetTab) {
+        targetTab.classList.add('active');
+        console.log('Showing tab:', tabId);
+      } else {
+        console.error('Tab not found:', tabId);
+      }
+    });
+  });
+
+  // Debug: Check if tabs are found
+  console.log('Tab buttons found:', tabButtons.length);
+  console.log('Tab contents found:', tabContents.length);
 });
 
 // Prevent drag start on images
@@ -306,14 +390,4 @@ document.addEventListener('copy', function (e) {
 // Prevent cut
 document.addEventListener('cut', function (e) {
   e.preventDefault();
-});
-
-const billingToggle = document.getElementById('billing-toggle');
-
-billingToggle.addEventListener('change', function () {
-  if (this.checked) {
-    document.body.classList.add('yearly-billing');
-  } else {
-    document.body.classList.remove('yearly-billing');
-  }
 });
