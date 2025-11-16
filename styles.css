@@ -2080,3 +2080,8 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
     display: none; /* Hide annotations on mobile for better UX */
   }
 }
+
+/* Добавьте в конец styles.css */
+[aria-hidden='true'] {
+  display: none !important;
+}
