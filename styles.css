@@ -313,13 +313,140 @@ body {
   background: var(--border-color);
 }
 
+/* Hero Visual Styles */
 .hero-visual {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.signature-preview {
+.dashboard-container {
   position: relative;
-  animation: float 6s ease-in-out infinite;
+  display: inline-block;
+}
+
+.dashboard-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.signatures-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.signature-item {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: signatureAppear 0.6s ease-out forwards;
+}
+
+/* Позиционирование сигнатур поверх dashboard */
+.signature-1 {
+  top: -30%;
+  left: -10%;
+  animation-delay: 0.5s;
+}
+
+.signature-2 {
+  top: 35%;
+  right: -8%;
+  animation-delay: 1s;
+}
+
+.signature-3 {
+  bottom: -10%;
+  left: 5%;
+  animation-delay: 1.5s;
+}
+
+/* Анимация появления */
+@keyframes signatureAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Эффекты при наведении */
+.signature-card-wrapper {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* .signature-card-wrapper:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+} */
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .signature-1,
+  .signature-2,
+  .signature-3 {
+    transform: scale(0.8);
+  }
+
+  .signature-1 {
+    top: 10%;
+    left: 2%;
+  }
+
+  .signature-2 {
+    top: 30%;
+    right: 2%;
+  }
+
+  .signature-3 {
+    bottom: 15%;
+    left: 5%;
+  }
+}
+
+/* Click indicator styles (если нужно оставить) */
+.click-indicator {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #666;
+  backdrop-filter: blur(10px);
+}
+
+.click-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
 @keyframes float {
