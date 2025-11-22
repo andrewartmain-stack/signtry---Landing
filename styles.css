@@ -1,5 +1,41 @@
 /* Import Poppins Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap'); */
+
+@font-face {
+  font-family: 'BrittiSans';
+  src: url('./fonts/BrittiSansTrial-Regular-BF6757bfd47ffbf.otf')
+    format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrittiSans';
+  src: url('./fonts/BrittiSansTrial-RegularItalic-BF6757bfd44e013.otf')
+    format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrittiSans';
+  src: url('./fonts/BrittiSansTrial-Bold-BF6757bfd4a96ed.otf')
+    format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrittiSans';
+  src: url('./fonts/BrittiSansTrial-BoldItalic-BF6757bfd4a2285.otf')
+    format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 /* Reset and Base Styles */
 * {
@@ -27,15 +63,15 @@
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'BrittiSans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -43,20 +79,24 @@ body {
 /* Navigation */
 .navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  top: 2%;
+  width: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   transition: all 0.3s ease;
+  border-radius: 15px;
+  box-shadow: 0 100px 80px #00000012, 0 30px 24px #0000000a,
+    0 12.5px 10px #0000000a, 0 4.5px 3.5px #00000008;
 }
 
 .navbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
 
 .nav-brand {
@@ -122,8 +162,8 @@ body {
 .btn-primary {
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--primary-dark)
+    var(--primary-dark),
+    var(--primary-light)
   ) !important;
   color: white !important;
   box-shadow: var(--shadow-md) !important;
@@ -137,7 +177,7 @@ body {
 .btn-secondary {
   background: white !important;
   color: var(--text-dark) !important;
-  border: 2px solid var(--border-color) !important;
+  border: 1px solid var(--border-color) !important;
 }
 
 .btn-secondary:hover {
@@ -191,6 +231,7 @@ body {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   background: var(--bg-gray);
+  border: 1px solid var(--border-color);
   border-radius: 2rem;
   font-size: 0.875rem;
   color: var(--text-gray);
@@ -217,7 +258,7 @@ body {
 
 .hero-title {
   font-size: 3.5rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.1;
   margin-bottom: 1.5rem;
 }
@@ -432,45 +473,39 @@ body {
 
 .hero-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
+  inset: 0;
   overflow: hidden;
+  z-index: -1;
 }
 
+/* Shared orb styles */
 .gradient-orb {
   position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle at center,
+    rgba(99, 102, 241, 0.6),
+    rgba(139, 92, 246, 0.3),
+    #c4deff,
+    transparent 70%
+  );
+  filter: blur(120px);
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  animation: drift 15s ease-in-out infinite;
+  animation: drift 12s ease-in-out infinite;
 }
 
+/* Orb positions */
 .orb-1 {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
-  top: -250px;
-  right: -250px;
+  top: -180px;
+  left: -120px;
+  animation-delay: 0s;
 }
 
 .orb-2 {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(
-    135deg,
-    var(--secondary-color),
-    var(--primary-color)
-  );
   bottom: -200px;
-  left: -200px;
-  animation-delay: 7s;
+  right: -120px;
+  animation-delay: -6s;
 }
 
 @keyframes drift {
@@ -518,7 +553,7 @@ body {
 
 /* Features Section */
 .features {
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 .section-header {
@@ -534,15 +569,16 @@ body {
 
 .section-description {
   font-size: 1.125rem;
-  color: var(--text-gray);
+  color: var(--bg-dark);
   max-width: 600px;
   margin: 0 auto;
 }
 
 .features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .feature-card {
@@ -551,6 +587,8 @@ body {
   border-radius: 1rem;
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
+  width: 20%;
+  min-width: 200px;
 }
 
 .feature-card:hover {
@@ -691,7 +729,7 @@ body {
 
 /* Pricing Section */
 .pricing {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: var(--bg-gray);
 }
 
@@ -709,7 +747,7 @@ body {
 
 .section-description {
   font-size: 1.125rem;
-  color: var(--text-gray);
+  color: var(--bg-dark);
   max-width: 600px;
   margin: 0 auto 2rem;
 }
@@ -977,7 +1015,7 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* FAQ Section */
 .faq {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: var(--bg-gray);
 }
 
@@ -1041,13 +1079,20 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* CTA Section */
 .cta {
-  padding: 6rem 0;
+  padding: 4rem 0;
+  color: var(--bg-dark);
+}
+
+.cta .container {
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--primary-dark)
+    rgba(99, 102, 241, 0.6),
+    rgba(139, 92, 246, 0.3),
+    #aed1ff,
+    transparent 70%
   );
-  color: white;
+  padding: 5rem;
+  border-radius: 2.5rem;
 }
 
 .cta-content {
@@ -1098,24 +1143,23 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 4rem;
+  display: flex;
+  justify-content: center;
   margin-bottom: 3rem;
 }
 
-.footer-brand {
+/* .footer-brand {
   max-width: 300px;
-}
+} */
 
-.footer-logo {
+/* .footer-logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   font-weight: 700;
   font-size: 1.25rem;
   margin-bottom: 1rem;
-}
+} */
 
 .footer-tagline {
   color: var(--text-light);
@@ -1123,9 +1167,9 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 .footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  display: flex;
+  gap: 5rem;
+  flex-wrap: wrap;
 }
 
 .footer-column h4 {
@@ -1149,18 +1193,21 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 .footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: flex;
+  justify-content: center;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-light);
 }
 
-.footer-socials {
+.footer-bottom p {
+  text-align: center;
+}
+
+/* .footer-socials {
   display: flex;
   gap: 1rem;
-}
+} */
 
 .footer-socials a {
   color: var(--text-light);
@@ -1230,8 +1277,30 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* Top User Examples Section */
 .user-examples {
-  padding: 6rem 0;
-  background: var(--bg-white);
+  position: relative;
+  padding: 4rem 0;
+}
+
+.user-examples .container {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.6),
+    rgba(139, 92, 246, 0.3),
+    #aed1ff,
+    transparent 70%
+  );
+  padding: 5rem;
+  border-radius: 2.5rem;
+}
+
+.curved-arrow {
+  position: absolute;
+  left: -20px; /* adjust as needed */
+  top: -2%;
+  transform: translateY(-50%);
+  width: 150px; /* size of arrow */
+  z-index: 100;
+  transform: translateY(-50%) scaleY(-1); /* flipped vertically */
 }
 
 .examples-grid {
@@ -1248,22 +1317,27 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
   padding: 1rem;
   text-align: center;
   color: var(--text-gray);
-  min-height: 250px;
+  min-height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
 }
 
-.example-placeholder:hover {
+/* .example-placeholder:hover {
   border-color: var(--primary-color);
   background: rgba(81, 162, 255, 0.05);
-}
+} */
 
 /* How It Works Section */
 .how-it-works {
-  padding: 6rem 0;
-  background: var(--bg-gray);
+  padding: 4rem 0;
+}
+
+.how-it-works .container {
+  padding: 5rem;
+  background: linear-gradient(135deg, var(--primary-light), var(--bg-gray));
+  border-radius: 2.5rem;
 }
 
 .steps-container {
@@ -1306,7 +1380,7 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 .step-description {
-  color: var(--text-gray);
+  color: var(--bg-dark);
   line-height: 1.7;
 }
 
@@ -1330,8 +1404,19 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* Email Comparison Section */
 .email-comparison {
-  padding: 6rem 0;
-  background: var(--bg-white);
+  padding: 4rem 0;
+}
+
+.email-comparison .container {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.6),
+    rgba(139, 92, 246, 0.3),
+    #aed1ff,
+    transparent 70%
+  );
+  padding: 5rem;
+  border-radius: 2.5rem;
 }
 
 .comparison-container {
@@ -1339,6 +1424,7 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   margin-top: 4rem;
+  margin-bottom: 20px;
 }
 
 .email-example {
@@ -1385,7 +1471,112 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
   transition: transform 0.3s ease;
 }
 
-.email-mockup:hover {
+.email-glow-wrapper {
+  position: relative;
+  padding: 4px;
+  border-radius: 16px;
+  background: linear-gradient(
+      120deg,
+      var(--primary-color),
+      var(--primary-light),
+      var(--secondary-color),
+      var(--primary-color)
+    )
+    0 0 / 300% 300%;
+  animation: borderGradient 6s linear infinite;
+}
+
+@keyframes borderGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Soft pulsing glow */
+@keyframes glowPulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
+
+/* Each popup */
+.popup {
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(5px);
+  animation: popupAnim 6s infinite;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Staggered animations */
+.popup:nth-child(1) {
+  animation-delay: 0s;
+  top: -20px;
+  right: -20px;
+}
+.popup:nth-child(2) {
+  animation-delay: 2s;
+  top: 150px;
+  left: -20px;
+}
+.popup:nth-child(3) {
+  animation-delay: 4s;
+  bottom: 20px;
+  right: 10px;
+}
+
+/* Keyframes */
+@keyframes popupAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  5% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  35% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+.love-emojie-icon {
+  width: 30px;
+}
+
+.email-glow-wrapper:hover {
   transform: translateY(-5px);
 }
 
@@ -1503,8 +1694,10 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
   gap: 4rem;
   margin-top: 4rem;
   padding: 2rem;
-  background: var(--bg-gray);
+  background: var(--bg-white);
   border-radius: 1rem;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .comparison-stat {
@@ -1512,7 +1705,7 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 .comparison-stat-value {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
@@ -1524,9 +1717,50 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 /* Responsive Design */
+
+@media (max-width: 1400px) {
+  .guarantee-popups {
+    display: none;
+  }
+
+  .navbar {
+    width: 80%;
+  }
+}
+
 @media (max-width: 968px) {
+  .navbar {
+    width: 80%;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    transform: translateX(-200%);
+    transition: transform 0.3s ease;
+    border-radius: 1rem;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
   .hero-visual {
     display: none;
+  }
+
+  .hero-content {
+    max-width: 100%;
   }
 
   .hero .container {
@@ -1574,6 +1808,10 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
     display: none;
   }
 
+  .navbar {
+    width: 80%;
+  }
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -1583,8 +1821,9 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
     flex-direction: column;
     padding: 2rem;
     box-shadow: var(--shadow-lg);
-    transform: translateX(-100%);
+    transform: translateX(-200%);
     transition: transform 0.3s ease;
+    border-radius: 1rem;
   }
 
   .nav-menu.active {
@@ -1629,9 +1868,8 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
   }
 
   .footer-bottom {
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
+    flex-direction: flex;
+    justify-content: center;
   }
 
   .pricing-grid {
@@ -1680,7 +1918,7 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* App Screenshots Section */
 .app-screenshots {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: var(--bg-white);
 }
 
@@ -1756,8 +1994,13 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* Social Proof Section */
 .social-proof {
-  padding: 6rem 0;
-  background: var(--bg-gray);
+  padding: 4rem 0;
+}
+
+.social-proof .container {
+  padding: 5rem;
+  background: linear-gradient(135deg, var(--primary-light), var(--bg-gray));
+  border-radius: 2.5rem;
 }
 
 .testimonials-grid {
@@ -1836,8 +2079,14 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* Integrations Section */
 .integrations {
-  padding: 6rem 0;
-  background: var(--bg-white);
+  padding: 4rem 0;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.6),
+    rgba(139, 92, 246, 0.3),
+    #aed1ff,
+    transparent 70%
+  );
   overflow: hidden;
 }
 
@@ -1874,9 +2123,9 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
   align-items: center;
   gap: 0.75rem;
   padding: 1.5rem 2rem;
-  background: var(--bg-gray);
+  /* background: var(--bg-gray); */
   border-radius: 1rem;
-  border: 1px solid var(--border-color);
+  /* border: 1px solid var(--border-color); */
   min-width: 140px;
   transition: all 0.3s ease;
   position: relative;
@@ -1890,8 +2139,8 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 .integration-icon {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   background: white;
   border-radius: 0.75rem;
   display: flex;
@@ -1906,8 +2155,8 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 }
 
 .integration-icon img {
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
@@ -2015,18 +2264,14 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* Results Section */
 .results {
-  padding: 6rem 0;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--primary-dark)
-  );
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--primary-light), var(--bg-gray));
   color: white;
 }
 
 .results .section-title,
 .results .section-description {
-  color: white;
+  color: var(--bg-dark);
 }
 
 .results-grid {
@@ -2040,23 +2285,28 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 .result-card {
   text-align: center;
   padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
 }
 
 .result-number {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
+  color: var(--bg-dark);
 }
 
 .result-title {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--bg-dark);
 }
 
 .result-desc {
   font-size: 0.875rem;
   opacity: 0.9;
+  color: var(--bg-dark);
 }
 
 /* Responsive Design */
@@ -2088,10 +2338,89 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 /* Guarantee Section Styles */
 .guarantee-section {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  padding: 80px 0;
+  padding: 4rem 0;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.guarantee-section .container {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.6),
+    rgba(139, 92, 246, 0.3),
+    #aed1ff,
+    transparent 70%
+  );
+  padding: 5rem;
+  border-radius: 2.5rem;
+}
+
+.guarantee-popup {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(5px);
+  animation: popupAnim 6s infinite;
+}
+
+.guarantee-popup:nth-child(1) {
+  animation-delay: 0s;
+  top: 100px;
+  right: 150px;
+}
+
+.guarantee-popup:nth-child(2) {
+  animation-delay: 1s;
+  top: 200px;
+  left: 120px;
+}
+
+.guarantee-popup:nth-child(3) {
+  animation-delay: 2s;
+  top: 400px;
+  right: 150px;
+}
+
+.guarantee-popup:nth-child(4) {
+  animation-delay: 3s;
+  top: 600px;
+  left: 200px;
+}
+
+.guarantee-popup:nth-child(5) {
+  animation-delay: 4s;
+  top: 500px;
+  right: 150px;
+}
+
+.guarantee-popup:nth-child(6) {
+  animation-delay: 5s;
+  top: 200px;
+  left: 150px;
+}
+
+.bouce {
+  animation: bounce 0.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(2px);
+  }
 }
 
 .guarantee-content {
@@ -2121,7 +2450,7 @@ body.yearly-billing .billing-option[data-billing='yearly'] {
 
 .guarantee-description {
   font-size: 1.25rem;
-  color: #6b7280;
+  color: var(--bg-dark);
   margin-bottom: 40px;
   line-height: 1.6;
 }
