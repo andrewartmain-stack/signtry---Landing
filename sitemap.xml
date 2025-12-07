@@ -9,27 +9,42 @@
 
 <url>
   <loc>https://signtry.com/</loc>
-  <lastmod>2025-11-16T14:41:23+00:00</lastmod>
+  <lastmod>2025-12-07T14:26:15+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://signtry.com/privacy.html</loc>
-  <lastmod>2025-11-16T14:41:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://signtry.com/terms.html</loc>
-  <lastmod>2025-11-16T14:41:24+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://signtry.com/gdpr.html</loc>
-  <lastmod>2025-11-16T14:41:24+00:00</lastmod>
+  <loc>https://signtry.com/blog.html</loc>
+  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://signtry.com/index.html</loc>
-  <lastmod>2025-11-16T14:41:24+00:00</lastmod>
+  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://signtry.com/privacy.html</loc>
+  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://signtry.com/terms.html</loc>
+  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://signtry.com/gdpr.html</loc>
+  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://signtry.com/posts/how-to-create-a-signature-in-gmail.html</loc>
+  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://signtry.com/posts/how-to-create-an-email-signature-in-gmail.html</loc>
+  <lastmod>2025-12-07T14:26:17+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
