@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QDTQTXQ2M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8QDTQTXQ2M');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create a Signature in Gmail (Step-by-Step Guide) - SignTry Blog</title>
+    <meta name="description"
+        content="Learn how to create a signature in Gmail quickly and professionally. Step-by-step guide to set up, customize, and optimize your Gmail signature for business or personal use.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Blog Post Page Styles */
+        .post-hero {
+            padding: 10rem 0 4rem;
+            background: linear-gradient(135deg,
+                    rgba(99, 102, 241, 0.6),
+                    rgba(139, 92, 246, 0.3),
+                    #aed1ff,
+                    transparent 70%);
+            color: var(--bg-dark);
+            text-align: center;
+        }
+
+        .post-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: rgba(81, 162, 255, 0.1);
+            color: var(--primary-color);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--primary-color);
+        }
+
+        .post-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+            font-size: 0.875rem;
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .author-details p {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        .post-content {
+            padding: 4rem 0;
+            background: var(--bg-white);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .post-body {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1.125rem;
+        }
+
+        .post-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .post-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .post-body p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+        }
+
+        .post-body ul,
+        .post-body ol {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            color: var(--text-gray);
+        }
+
+        .post-body li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .post-body strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .post-body blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 2rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .post-body code {
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+
+        .post-body pre {
+            background: var(--bg-dark);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .highlight-box h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box p {
+            margin: 0;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .share-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-gray);
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .share-button:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            gap: 0.75rem;
+        }
+
+        .nav-link.prev {
+            margin-right: auto;
+        }
+
+        .nav-link.next {
+            margin-left: auto;
+        }
+
+        /* Related Posts Section */
+        .related-posts {
+            padding: 4rem 0;
+            background: var(--bg-light);
+            padding-top: 0;
+        }
+
+        .related-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .related-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .related-header p {
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .related-card-content {
+            padding: 1.5rem;
+        }
+
+        .related-category {
+            display: inline-block;
+            background: rgba(81, 162, 255, 0.1);
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .related-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .related-card p {
+            color: var(--text-gray);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .related-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .related-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .post-hero {
+                padding: 8rem 0 3rem;
+            }
+
+            .post-hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .post-image {
+                height: 300px;
+            }
+
+            .post-body {
+                font-size: 1rem;
+            }
+
+            .post-body h2 {
+                font-size: 1.75rem;
+            }
+
+            .post-body h3 {
+                font-size: 1.25rem;
+            }
+
+            .post-actions {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+
+            .nav-link.prev,
+            .nav-link.next {
+                margin: 0;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .post-hero h1 {
+                font-size: 1.875rem;
+            }
+
+            .post-container {
+                padding: 0 1rem;
+            }
+
+            .post-image {
+                height: 250px;
+            }
+        }
+
+        .image-placeholder {
+            background: var(--bg-light);
+            border: 2px dashed var(--border-color);
+            border-radius: 0.5rem;
+            padding: 3rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--text-light);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="../images/logo-full.png" alt="logo" style="max-width: 100px; width: 100%;">
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#examples">Examples</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="/blog.html">Blog</a>
+                <a class="btn-secondary" href="https://app.signtry.com/login">Sign In</a>
+                <a class="btn-primary" href="https://app.signtry.com/signup">Get Started</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Hero -->
+    <section class="post-hero">
+        <div class="post-hero-content">
+            <span class="post-category">Guides</span>
+            <h1>How to Create a Signature in Gmail (Step-by-Step Guide)</h1>
+            <div class="author-info">
+                <img src="../images/avatar.jpg" alt="Andrew Artemov" class="author-avatar">
+                <div class="author-details">
+                    <h4>Andrew Artemov</h4>
+                    <p>Email Marketing Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <section class="post-content">
+        <div class="post-container">
+            <img src="../images/blog-images/email-signature.jpg" alt="Create Gmail Signature" class="post-image">
+
+            <article class="post-body">
+                <p>Learning <strong>how to create a signature in Gmail</strong> is one of the fastest ways to improve
+                    the professionalism of your emails. A clean, well-structured signature helps recipients identify who
+                    you are, how to contact you, and how to visit your website or social pages. Whether you use Gmail
+                    for business or personal communication, following the right steps ensures your signature loads
+                    correctly on desktop and mobile.</p>
+
+                <h2>Why Knowing How to Create a Signature in Gmail Matters</h2>
+                <p>A Gmail signature functions like a digital business card. Every email you send becomes an opportunity
+                    to strengthen your brand, share important links, or encourage further actions such as scheduling a
+                    call. A strong signature also builds trust because it shows consistency, transparency, and attention
+                    to detail.</p>
+                <p>When you understand exactly <strong>how to create a signature in Gmail</strong>, you can customize it
+                    with your job title, logo, website URL, phone number, and even a short call to action. Gmail’s
+                    editor makes this process straightforward as long as you know where to find the right settings.</p>
+
+                <h2>What You Can Include in a Gmail Signature</h2>
+                <ul>
+                    <li>
+                        <p>Your full name and professional title</p>
+                    </li>
+                    <li>
+                        <p>Company name and website link</p>
+                    </li>
+                    <li>
+                        <p>Email, phone number, or booking link</p>
+                    </li>
+                    <li>
+                        <p>Small logo or headshot</p>
+                    </li>
+                    <li>
+                        <p>Social media icons or plain text links</p>
+                    </li>
+                    <li>
+                        <p>Short disclaimer if needed</p>
+                    </li>
+                </ul>
+
+                <h2>How to Create a Signature in Gmail (Desktop Step-by-Step)</h2>
+                <p>Follow these steps on a laptop or desktop computer for full editing options.</p>
+
+                <ol>
+                    <li>
+                        <p><strong>Open Gmail and access settings.</strong> Sign in, click the gear icon in the
+                            top-right corner, then select “See all settings.”</p>
+                        <p><img src="../images/blog-images/chrome_sG1t7rx7Uk.png" style="width: 100%;"
+                                alt="Gmail settings placeholder"></p>
+                    </li>
+                    <li>
+                        <p><strong>Go to the General tab.</strong> Scroll down until you find the section labeled
+                            “Signature.”</p>
+                    </li>
+                    <li>
+                        <p><strong>Create a new signature.</strong> Click the “Create new” button and give your
+                            signature an internal name such as “Work,” “Personal,” or “Business.”</p>
+                    </li>
+                    <li>
+                        <p><strong>Edit your signature content.</strong> Type your details using the built-in editor.
+                            You can add links, format text, and insert images for branding.</p>
+                        <p><img src="../images/blog-images/chrome_NIZ08H37YH.png"
+                                alt="Gmail signature editor placeholder" width="100%"></p>
+                    </li>
+                    <li>
+                        <p><strong>Assign the signature to email types.</strong> Choose which signature appears in new
+                            emails and which appears in replies or forwards. Gmail lets you choose separate defaults for
+                            each action.</p>
+                    </li>
+                    <li>
+                        <p><strong>Save your changes.</strong> Scroll down to the bottom of the settings page and click
+                            “Save Changes.”</p>
+                    </li>
+                </ol>
+
+                <h2>How to Add Images to a Gmail Signature</h2>
+                <p>If you want to include a logo, headshot, or social media icons, Gmail makes this simple. In the
+                    editor, click the image icon, upload from your device or Google Drive, and select the size. To keep
+                    your emails loading fast, use small, compressed images under 100 KB.</p>
+                <p><img src="../images/blog-images/chrome_ypjM4joJ4P.png"
+                        alt="Adding images to Gmail signature placeholder" style="width: 100%;"></p>
+
+                <h2>How to Create a Signature in Gmail on Mobile</h2>
+                <p>The Gmail mobile app only supports basic text signatures. It does not support HTML formatting,
+                    images, or advanced layout. To set it up:</p>
+                <ol>
+                    <li>
+                        <p>Open the Gmail app on your phone.</p>
+                    </li>
+                    <li>
+                        <p>Tap the menu icon and go to “Settings.”</p>
+                    </li>
+                    <li>
+                        <p>Select the email account you want to edit.</p>
+                    </li>
+                    <li>
+                        <p>Tap “Mobile signature.”</p>
+                    </li>
+                    <li>
+                        <p>Enter a simple text-based signature and save it.</p>
+                    </li>
+                </ol>
+                <p>If you want a fully designed HTML signature, you must create it on desktop. Mobile will still show
+                    the desktop signature when replying in many cases, but appearance may vary by device.</p>
+
+                <h2>Sample Signature Text You Can Use</h2>
+                <p>Below are simple copy-and-paste examples. Replace the placeholders with your details.</p>
+
+                <pre><code>John Doe
+Marketing Specialist | BrightWave Studio
+Website: https://www.example.com
+Phone: +1 (555) 987-6543
+</code></pre>
+
+                <pre><code>Jane Smith
+Founder, JS Creative Lab
+Portfolio: https://portfolio.example.com
+Book a meeting: https://calendly.com/janesmith
+</code></pre>
+
+                <h2>Best Practices for a Professional Gmail Signature</h2>
+                <ul>
+                    <li>
+                        <p><strong>Keep it short.</strong> A long signature looks cluttered and distracts the reader.
+                            Two to five lines is typically best.</p>
+                    </li>
+                    <li>
+                        <p><strong>Use one image only.</strong> Too many icons or logos can slow loading times and
+                            appear unprofessional.</p>
+                    </li>
+                    <li>
+                        <p><strong>Make links clear.</strong> Use full URLs or clean anchor text so readers know exactly
+                            what they are clicking.</p>
+                    </li>
+                    <li>
+                        <p><strong>Test on multiple devices.</strong> Send test emails to yourself and check the
+                            signature in Gmail, Outlook, iPhone, and Android clients.</p>
+                    </li>
+                    <li>
+                        <p><strong>Avoid advanced HTML.</strong> Keep formatting simple because email clients render
+                            complex code inconsistently.</p>
+                    </li>
+                </ul>
+
+                <h2>Common Issues and How to Fix Them</h2>
+
+                <h3>My Gmail signature is not showing up</h3>
+                <p>Ensure you selected the correct signature under “Signature defaults.” You may also need to check the
+                    option “Insert signature before quoted text in replies.”</p>
+
+                <h3>Images appear broken for recipients</h3>
+                <p>Use publicly accessible image URLs or upload directly from your computer. Huge images or restricted
+                    file permissions can cause loading failures. Compress your images for faster display.</p>
+
+                <h3>My signature formatting changes when replying</h3>
+                <p>Some email clients strip advanced formatting. Gmail also nests replies within quoted text. Adjust the
+                    signature settings so your signature appears above quoted text and keep formatting minimal.</p>
+
+                <h2>Conclusion</h2>
+                <p>Now that you know exactly <strong>how to create a signature in Gmail</strong>, you can build a clean
+                    and effective email footer that reinforces your personal or professional brand. A well-designed
+                    Gmail signature helps recipients trust you, find your contact details quickly, and engage with your
+                    website or social profiles. Review your signature every few months to keep it accurate and aligned
+                    with your current role, company, or services.</p>
+            </article>
+
+            <!-- Post Actions (Share, Like) -->
+            <div class="post-actions">
+                <div class="share-buttons">
+                    <span>Copy Article Link:</span>
+                    <a href="#" class="share-button" aria-label="Copy link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M8.33333 13.3333L11.6667 10L8.33333 6.66667" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.6667 10H4.16667" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" />
+                            <path
+                                d="M13.3333 6.66667H15C15.442 6.66667 15.866 6.84226 16.1785 7.15482C16.4911 7.46738 16.6667 7.89131 16.6667 8.33333V15C16.6667 15.442 16.4911 15.866 16.1785 16.1785C15.866 16.4911 15.442 16.6667 15 16.6667H8.33333C7.89131 16.6667 7.46738 16.4911 7.15482 16.1785C6.84226 15.866 6.66667 15.442 6.66667 15V13.3333"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Posts Section -->
+    <section class="related-posts">
+        <div class="post-container">
+            <div class="related-header">
+                <h2>Latest Articles</h2>
+            </div>
+
+            <div class="related-grid" id="related-grid">
+                <!-- Динамически генерируемые посты -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#screenshots">Screenshots</a>
+                    </div>
+                    <!-- <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div> -->
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="index.html">FAQ</a>
+                        <a href="mailto:support@signtry.com">Contact Support</a>
+                        <a href="/blog.html">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="./privacy.html">Privacy</a>
+                        <a href="./terms.html">Terms</a>
+                        <a href="./gdpr.html">GDPR</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SignTry.com | All rights reserved.</p>
+                <!-- <div class="footer-socials">
+                    <a href="#" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M6.29 18.25C13.84 18.25 17.96 12.11 17.96 6.77C17.96 6.58 17.96 6.39 17.95 6.2C18.75 5.62 19.45 4.89 20 4.06C19.27 4.38 18.49 4.6 17.68 4.7C18.51 4.19 19.14 3.39 19.45 2.45C18.66 2.92 17.79 3.26 16.87 3.45C16.13 2.66 15.06 2.17 13.89 2.17C11.66 2.17 9.86 3.97 9.86 6.2C9.86 6.51 9.89 6.82 9.96 7.11C6.54 6.94 3.49 5.35 1.42 2.91C1.08 3.49 0.88 4.19 0.88 4.94C0.88 6.36 1.61 7.61 2.71 8.35C2.04 8.33 1.42 8.15 0.88 7.85V7.9C0.88 9.85 2.26 11.48 4.1 11.85C3.77 11.94 3.42 11.99 3.06 11.99C2.81 11.99 2.57 11.97 2.33 11.92C2.82 13.53 4.3 14.69 6.07 14.72C4.7 15.79 2.98 16.43 1.12 16.43C0.8 16.43 0.49 16.41 0.18 16.38C1.97 17.52 4.09 18.17 6.37 18.17" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M18.72 0H1.28C0.57 0 0 0.57 0 1.28V18.72C0 19.43 0.57 20 1.28 20H18.72C19.43 20 20 19.43 20 18.72V1.28C20 0.57 19.43 0 18.72 0ZM5.92 17.04H2.96V7.48H5.92V17.04ZM4.44 6.16C3.49 6.16 2.72 5.39 2.72 4.44C2.72 3.49 3.49 2.72 4.44 2.72C5.39 2.72 6.16 3.49 6.16 4.44C6.16 5.39 5.39 6.16 4.44 6.16ZM17.04 17.04H14.08V12.4C14.08 11.26 14.06 9.79 12.48 9.79C10.88 9.79 10.64 11.04 10.64 12.32V17.04H7.68V7.48H10.52V8.84H10.56C10.96 8.08 11.96 7.28 13.44 7.28C16.44 7.28 17.04 9.24 17.04 11.8V17.04Z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z" />
+                        </svg>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="../blog-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Copy link functionality
+            const copyLinkButton = document.querySelector('.share-button[aria-label="Copy link"]');
+            if (copyLinkButton) {
+                copyLinkButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Copy current URL to clipboard
+                    navigator.clipboard.writeText(window.location.href)
+                        .then(() => {
+                            // Show success feedback
+                            const originalHTML = this.innerHTML;
+                            this.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        `;
+
+                            // Revert after 2 seconds
+                            setTimeout(() => {
+                                this.innerHTML = originalHTML;
+                            }, 2000);
+                        })
+                        .catch(err => {
+                            console.error('Failed to copy link: ', err);
+                        });
+                });
+            }
+
+            // Save button functionality
+            const saveButton = document.querySelector('.btn-secondary');
+            if (saveButton) {
+                saveButton.addEventListener('click', () => {
+                    const originalText = saveButton.innerHTML;
+                    saveButton.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M16.6666 5L7.49992 14.1667L3.33325 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Saved!
+                `;
+                    saveButton.classList.add('btn-primary');
+                    saveButton.classList.remove('btn-secondary');
+
+                    // Revert after 2 seconds
+                    setTimeout(() => {
+                        saveButton.innerHTML = originalText;
+                        saveButton.classList.remove('btn-primary');
+                        saveButton.classList.add('btn-secondary');
+                    }, 2000);
+                });
+            }
+
+            // Load and display related posts
+            if (window.blogPosts && Array.isArray(window.blogPosts)) {
+                loadRelatedPosts();
+            } else {
+                console.error('blogPosts data not found');
+            }
+        });
+
+        // Function to load and display 2 latest related posts
+        function loadRelatedPosts() {
+            try {
+                // Получить 2 последние статьи, исключая текущую
+                const recentPosts = window.blogPosts
+                    .filter(post => post.slug) // Исключить текущую статью
+                    .sort((a, b) => {
+                        // Сортировка по дате (новые сначала)
+                        return new Date(b.date) - new Date(a.date);
+                    })
+                    .slice(0, 2); // Взять только 2 статьи
+
+                const relatedGrid = document.getElementById('related-grid');
+                relatedGrid.innerHTML = '';
+
+                if (recentPosts.length === 0) {
+                    relatedGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                        <p style="color: var(--text-gray);">No related articles found.</p>
+                    </div>
+                `;
+                    return;
+                }
+
+                // Отобразить посты
+                recentPosts.forEach(post => {
+                    const postElement = document.createElement('article');
+                    postElement.className = 'related-card';
+
+                    // Форматирование даты
+                    const dateObj = new Date(post.date);
+                    const formattedDate = dateObj.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    });
+
+                    // Форматирование категории
+                    const formattedCategory = post.category
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+
+                    postElement.innerHTML = `
+                    <img src="../${post.image}" alt="${post.title}" class="related-image">
+                    <div class="related-card-content">
+                        <span class="related-category">${formattedCategory}</span>
+                        <h3>${post.title}</h3>
+                        <p>${post.description}</p>
+                        <div class="related-meta">
+                            <span>${formattedDate}</span>
+                            <span>${post.readTime} min read</span>
+                        </div>
+                        <a href="../posts/${post.slug}.html" class="related-link">
+                            Read Article
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                `;
+
+                    relatedGrid.appendChild(postElement);
+                });
+
+            } catch (error) {
+                console.error('Error loading related posts:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>

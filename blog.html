@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QDTQTXQ2M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8QDTQTXQ2M');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - SignTry</title>
+    <meta name="description"
+        content="SignTry Blog - Learn how you can improve your email CTR and email signature best practices">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Blog Page Styles */
+        .blog-hero {
+            padding: 10rem 0 4rem;
+            background: linear-gradient(135deg,
+                    rgba(99, 102, 241, 0.6),
+                    rgba(139, 92, 246, 0.3),
+                    #aed1ff,
+                    transparent 70%);
+            color: var(--bg-dark);
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-content {
+            padding: 4rem 0;
+            background: var(--bg-white);
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            min-height: 500px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: rgba(81, 162, 255, 0.1);
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            color: var(--text-gray);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: gap 0.2s ease;
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .pagination-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pagination-button:hover:not(:disabled) {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination-button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-ellipsis {
+            color: var(--text-light);
+            padding: 0 0.5rem;
+        }
+
+        /* Search and Filter */
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .blog-search {
+            position: relative;
+            width: 300px;
+        }
+
+        .blog-search input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .blog-search input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(81, 162, 255, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .categories-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .category-button {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .category-button:hover,
+        .category-button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            grid-column: 1 / -1;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .no-results p {
+            color: var(--text-gray);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero {
+                padding: 8rem 0 3rem;
+            }
+
+            .blog-hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .blog-content {
+                padding: 3rem 0;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .blog-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .blog-search {
+                width: 100%;
+            }
+
+            .categories-filter {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-card {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="./images/logo-full.png" alt="logo" style="max-width: 100px; width: 100%;">
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#examples">Examples</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="/blog.html">Blog</a>
+                <a class="btn-secondary" href="https://app.signtry.com/login">Sign In</a>
+                <a class="btn-primary" href="https://app.signtry.com/signup">Get Started</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>SignTry Blog</h1>
+            <p>Learn how to improve your email CTR, email signature best practices, and productivity tips</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="blog-container">
+            <!-- Search and Filter -->
+            <div class="blog-header">
+                <div class="blog-search">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path
+                            d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <input type="text" placeholder="Search articles..." id="blogSearch">
+                </div>
+                <div class="categories-filter">
+                    <button class="category-button active" data-category="all">All</button>
+                    <button class="category-button" data-category="guides">Guides</button>
+                    <button class="category-button" data-category="best-practices">Best Practices</button>
+                    <button class="category-button" data-category="productivity">Productivity</button>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid" id="blogGrid">
+                <!-- Все посты будут загружены через JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Пагинация будет генерироваться через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#screenshots">Screenshots</a>
+                    </div>
+                    <!-- <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div> -->
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="index.html">FAQ</a>
+                        <a href="mailto:support@signtry.com">Contact Support</a>
+                        <a href="/blog.html">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="./privacy.html">Privacy</a>
+                        <a href="./terms.html">Terms</a>
+                        <a href="./gdpr.html">GDPR</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SignTry.com | All rights reserved.</p>
+                <!-- <div class="footer-socials">
+                    <a href="#" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M6.29 18.25C13.84 18.25 17.96 12.11 17.96 6.77C17.96 6.58 17.96 6.39 17.95 6.2C18.75 5.62 19.45 4.89 20 4.06C19.27 4.38 18.49 4.6 17.68 4.7C18.51 4.19 19.14 3.39 19.45 2.45C18.66 2.92 17.79 3.26 16.87 3.45C16.13 2.66 15.06 2.17 13.89 2.17C11.66 2.17 9.86 3.97 9.86 6.2C9.86 6.51 9.89 6.82 9.96 7.11C6.54 6.94 3.49 5.35 1.42 2.91C1.08 3.49 0.88 4.19 0.88 4.94C0.88 6.36 1.61 7.61 2.71 8.35C2.04 8.33 1.42 8.15 0.88 7.85V7.9C0.88 9.85 2.26 11.48 4.1 11.85C3.77 11.94 3.42 11.99 3.06 11.99C2.81 11.99 2.57 11.97 2.33 11.92C2.82 13.53 4.3 14.69 6.07 14.72C4.7 15.79 2.98 16.43 1.12 16.43C0.8 16.43 0.49 16.41 0.18 16.38C1.97 17.52 4.09 18.17 6.37 18.17" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M18.72 0H1.28C0.57 0 0 0.57 0 1.28V18.72C0 19.43 0.57 20 1.28 20H18.72C19.43 20 20 19.43 20 18.72V1.28C20 0.57 19.43 0 18.72 0ZM5.92 17.04H2.96V7.48H5.92V17.04ZM4.44 6.16C3.49 6.16 2.72 5.39 2.72 4.44C2.72 3.49 3.49 2.72 4.44 2.72C5.39 2.72 6.16 3.49 6.16 4.44C6.16 5.39 5.39 6.16 4.44 6.16ZM17.04 17.04H14.08V12.4C14.08 11.26 14.06 9.79 12.48 9.79C10.88 9.79 10.64 11.04 10.64 12.32V17.04H7.68V7.48H10.52V8.84H10.56C10.96 8.08 11.96 7.28 13.44 7.28C16.44 7.28 17.04 9.24 17.04 11.8V17.04Z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z" />
+                        </svg>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./blog-data.js"></script>
+
+    <script>
+        // Конфигурация пагинации
+        const ITEMS_PER_PAGE = 6;
+        let currentPage = 1;
+        let currentCategory = 'all';
+        let currentSearch = '';
+        let filteredPosts = [...blogPosts];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const blogSearch = document.getElementById('blogSearch');
+            const categoryButtons = document.querySelectorAll('.category-button');
+            const blogGrid = document.getElementById('blogGrid');
+            const paginationContainer = document.getElementById('pagination');
+
+            // Инициализация
+            renderBlogPosts();
+            renderPagination();
+
+            // Фильтрация по категориям
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentCategory = button.dataset.category;
+                    currentPage = 1;
+                    filterPosts();
+                    renderBlogPosts();
+                    renderPagination();
+                });
+            });
+
+            // Поиск
+            blogSearch.addEventListener('input', (e) => {
+                currentSearch = e.target.value.toLowerCase();
+                currentPage = 1;
+                filterPosts();
+                renderBlogPosts();
+                renderPagination();
+            });
+
+            // Функция фильтрации постов
+            function filterPosts() {
+                filteredPosts = blogPosts.filter(post => {
+                    // Фильтр по категории
+                    const matchesCategory = currentCategory === 'all' || post.category === currentCategory;
+
+                    // Фильтр по поиску
+                    const matchesSearch = !currentSearch ||
+                        post.title.toLowerCase().includes(currentSearch) ||
+                        post.description.toLowerCase().includes(currentSearch);
+
+                    return matchesCategory && matchesSearch;
+                });
+            }
+
+            // Функция отрисовки постов
+            function renderBlogPosts() {
+                blogGrid.innerHTML = '';
+
+                // Расчет, какие посты показывать на текущей странице
+                const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+                const endIndex = startIndex + ITEMS_PER_PAGE;
+                const postsToShow = filteredPosts.slice(startIndex, endIndex);
+
+                if (postsToShow.length === 0) {
+                    blogGrid.innerHTML = `
+                        <div class="no-results">
+                            <h3>No articles found</h3>
+                            <p>Try adjusting your search or filter to find what you're looking for.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                postsToShow.forEach((post, index) => {
+                    const card = document.createElement('article');
+                    card.className = 'blog-card';
+                    card.dataset.category = post.category;
+                    card.style.animationDelay = `${index * 0.1}s`;
+
+                    card.innerHTML = `
+                        <img src="${post.image}" alt="${post.title}" class="blog-image">
+                        <div class="blog-card-content">
+                            <span class="blog-category">${post.category.replace('-', ' ').toUpperCase()}</span>
+                            <h3>${post.title}</h3>
+                            <p>${post.description}</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">
+                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" fill-rule="evenodd" clip-rule="evenodd"/>
+                                    </svg>
+                                    ${post.date}
+                                </span>
+                                <span class="read-time">
+                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <path d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M10 6V10L13 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    ${post.readTime} min
+                                </span>
+                            </div>
+                            <a href="/posts/${post.slug}.html" class="read-more">
+                                Read Article
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    `;
+
+                    blogGrid.appendChild(card);
+                });
+            }
+
+            // Функция отрисовки пагинации
+            function renderPagination() {
+                const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE);
+
+                // Если постов нет или только одна страница - скрываем пагинацию
+                if (totalPages <= 1) {
+                    paginationContainer.style.display = 'none';
+                    return;
+                }
+
+                paginationContainer.style.display = 'flex';
+                paginationContainer.innerHTML = '';
+
+                // Кнопка "Назад"
+                const prevButton = document.createElement('button');
+                prevButton.className = 'pagination-button';
+                prevButton.id = 'prevPage';
+                prevButton.disabled = currentPage === 1;
+                prevButton.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                `;
+                prevButton.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderBlogPosts();
+                        renderPagination();
+                        window.scrollTo({ top: blogGrid.offsetTop - 100, behavior: 'smooth' });
+                    }
+                });
+                paginationContainer.appendChild(prevButton);
+
+                // Кнопки с номерами страниц
+                let startPage = Math.max(1, currentPage - 2);
+                let endPage = Math.min(totalPages, currentPage + 2);
+
+                // Если в начале
+                if (currentPage <= 3) {
+                    endPage = Math.min(5, totalPages);
+                }
+
+                // Если в конце
+                if (currentPage >= totalPages - 2) {
+                    startPage = Math.max(1, totalPages - 4);
+                }
+
+                // Первая страница
+                if (startPage > 1) {
+                    const firstButton = document.createElement('button');
+                    firstButton.className = 'pagination-button';
+                    firstButton.textContent = '1';
+                    firstButton.addEventListener('click', () => {
+                        currentPage = 1;
+                        renderBlogPosts();
+                        renderPagination();
+                        window.scrollTo({ top: blogGrid.offsetTop - 100, behavior: 'smooth' });
+                    });
+                    paginationContainer.appendChild(firstButton);
+
+                    if (startPage > 2) {
+                        const ellipsis = document.createElement('span');
+                        ellipsis.className = 'pagination-ellipsis';
+                        ellipsis.textContent = '...';
+                        paginationContainer.appendChild(ellipsis);
+                    }
+                }
+
+                // Основные страницы
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.className = 'pagination-button';
+                    if (i === currentPage) pageButton.classList.add('active');
+                    pageButton.textContent = i;
+                    pageButton.addEventListener('click', () => {
+                        currentPage = i;
+                        renderBlogPosts();
+                        renderPagination();
+                        window.scrollTo({ top: blogGrid.offsetTop - 100, behavior: 'smooth' });
+                    });
+                    paginationContainer.appendChild(pageButton);
+                }
+
+                // Последняя страница
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) {
+                        const ellipsis = document.createElement('span');
+                        ellipsis.className = 'pagination-ellipsis';
+                        ellipsis.textContent = '...';
+                        paginationContainer.appendChild(ellipsis);
+                    }
+
+                    const lastButton = document.createElement('button');
+                    lastButton.className = 'pagination-button';
+                    lastButton.textContent = totalPages;
+                    lastButton.addEventListener('click', () => {
+                        currentPage = totalPages;
+                        renderBlogPosts();
+                        renderPagination();
+                        window.scrollTo({ top: blogGrid.offsetTop - 100, behavior: 'smooth' });
+                    });
+                    paginationContainer.appendChild(lastButton);
+                }
+
+                // Кнопка "Вперед"
+                const nextButton = document.createElement('button');
+                nextButton.className = 'pagination-button';
+                nextButton.id = 'nextPage';
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                `;
+                nextButton.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderBlogPosts();
+                        renderPagination();
+                        window.scrollTo({ top: blogGrid.offsetTop - 100, behavior: 'smooth' });
+                    }
+                });
+                paginationContainer.appendChild(nextButton);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
