@@ -1,44 +1,81 @@
+/* ============================================
+   1. NAVIGATION & SMOOTH SCROLL
+   ============================================ */
+
+// Mobile Navigation Toggle
 const navToggle = document.getElementById('navToggle'),
   navMenu = document.getElementById('navMenu');
+
 navToggle.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
+
+// Close mobile menu when clicking on a link
 const navLinks = navMenu.querySelectorAll('a');
-navLinks.forEach((e) => {
-  e.addEventListener('click', () => {
+navLinks.forEach((link) => {
+  link.addEventListener('click', () => {
     navMenu.classList.remove('active');
   });
-}),
-  document.querySelectorAll('a[href^="#"]').forEach((e) => {
-    e.addEventListener('click', function (e) {
-      e.preventDefault();
-      let t = document.querySelector(this.getAttribute('href'));
-      if (t) {
-        let o = t.offsetTop - 80;
-        window.scrollTo({ top: o, behavior: 'smooth' });
-      }
-    });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    let target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      let offsetTop = target.offsetTop - 80;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }
   });
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
+});
+
+// Active nav link on scroll
 window.addEventListener('scroll', () => {
-  let e = window.pageYOffset;
-  e > 100
-    ? (navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)')
-    : (navbar.style.boxShadow = 'none'),
-    (lastScroll = e);
-});
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach((e) => {
-  let t = e.querySelector('.faq-question');
-  t.addEventListener('click', () => {
-    let t = e.classList.contains('active');
-    faqItems.forEach((e) => {
-      e.classList.remove('active');
-    }),
-      t || e.classList.add('active');
+  const sections = document.querySelectorAll('section[id]');
+  let currentSection = '';
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 200) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${currentSection}`) {
+      link.classList.add('active');
+    }
   });
 });
+
+/* ============================================
+   2. FAQ ACCORDION
+   ============================================ */
+
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach((item) => {
+  const question = item.querySelector('.faq-question');
+  question.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+
+    // Close all other FAQ items
+    faqItems.forEach((faqItem) => {
+      faqItem.classList.remove('active');
+    });
+
+    // Open current item if it was closed
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  });
+});
+
+/* ============================================
+   3. VIDEO MODAL
+   ============================================ */
+
 const watchDemoBtn = document.getElementById('watchDemoBtn'),
   playButton = document.getElementById('playButton'),
   videoModal = document.getElementById('videoModal'),
@@ -49,182 +86,475 @@ const watchDemoBtn = document.getElementById('watchDemoBtn'),
   videoOverlay = document.getElementById('videoOverlay'),
   demoVideo = document.getElementById('demoVideo'),
   videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+
+// Open video modal
 function openVideoModal() {
-  videoModal.classList.add('active'),
-    (document.body.style.overflow = 'hidden'),
-    (modalVideo.src = videoUrl + '?autoplay=1');
+  videoModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  modalVideo.src = videoUrl + '?autoplay=1';
 }
+
+// Close video modal
 function closeVideoModal() {
-  videoModal.classList.remove('active'),
-    (document.body.style.overflow = ''),
-    (modalVideo.src = '');
+  videoModal.classList.remove('active');
+  document.body.style.overflow = '';
+  modalVideo.src = '';
 }
-watchDemoBtn && watchDemoBtn.addEventListener('click', openVideoModal),
-  closeModal && closeModal.addEventListener('click', closeVideoModal),
-  videoModalBackdrop &&
-    videoModalBackdrop.addEventListener('click', closeVideoModal),
-  document.addEventListener('keydown', (e) => {
-    'Escape' === e.key &&
-      videoModal &&
-      videoModal.classList.contains('active') &&
-      closeVideoModal();
-  }),
-  playButton &&
-    playButton.addEventListener('click', (e) => {
-      e.preventDefault(), e.stopPropagation();
-      let t = videoContainer.querySelector('.video-placeholder');
-      t && (t.style.display = 'none'),
-        videoOverlay && (videoOverlay.style.display = 'block'),
-        demoVideo && (demoVideo.src = videoUrl + '?autoplay=1');
-    }),
-  videoModal &&
-    videoModal.addEventListener('transitionend', function (e) {
-      !videoModal.classList.contains('active') &&
-        videoOverlay &&
-        demoVideo &&
-        (demoVideo.src = '');
-    });
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' },
-  observer = new IntersectionObserver((e) => {
-    e.forEach((e) => {
-      e.isIntersecting &&
-        ((e.target.style.opacity = '1'),
-        (e.target.style.transform = 'translateY(0)'));
-    });
-  }, observerOptions),
-  animateOnScroll = document.querySelectorAll(
-    '.feature-card, .pricing-card, .faq-item'
-  );
-function animateCounter(e, t, o = 2e3) {
-  let a = t / (o / 16),
-    n = 0,
-    l = setInterval(() => {
-      (n += a) >= t
-        ? ((e.textContent = formatNumber(t)), clearInterval(l))
-        : (e.textContent = formatNumber(Math.floor(n)));
-    }, 16);
+
+// Event listeners for video modal
+if (watchDemoBtn) {
+  watchDemoBtn.addEventListener('click', openVideoModal);
 }
-function formatNumber(e) {
-  return e >= 1e6
-    ? (e / 1e6).toFixed(1) + 'M+'
-    : e >= 1e3
-    ? (e / 1e3).toFixed(0) + 'K+'
-    : e.toString();
+
+if (closeModal) {
+  closeModal.addEventListener('click', closeVideoModal);
 }
-animateOnScroll.forEach((e) => {
-  (e.style.opacity = '0'),
-    (e.style.transform = 'translateY(20px)'),
-    (e.style.transition = 'opacity 0.6s ease, transform 0.6s ease'),
-    observer.observe(e);
+
+if (videoModalBackdrop) {
+  videoModalBackdrop.addEventListener('click', closeVideoModal);
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+  if (
+    e.key === 'Escape' &&
+    videoModal &&
+    videoModal.classList.contains('active')
+  ) {
+    closeVideoModal();
+  }
 });
-const statsObserver = new IntersectionObserver(
-    (e) => {
-      e.forEach((e) => {
-        if (e.isIntersecting && !e.target.classList.contains('animated')) {
-          e.target.classList.add('animated');
-          let t = e.target.querySelectorAll('.stat-number');
-          t.forEach((e) => {
-            let t = e.textContent;
-            if (t.includes('K+')) {
-              let o = 1e3 * parseFloat(t);
-              animateCounter(e, o);
-            } else if (t.includes('M+')) {
-              let a = 1e6 * parseFloat(t);
-              animateCounter(e, a);
-            } else if (t.includes('/')) return;
-          });
-        }
-      });
-    },
-    { threshold: 0.5 }
-  ),
-  heroStats = document.querySelector('.hero-stats');
-function validateEmail(e) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+// Play button in demo section
+if (playButton) {
+  playButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const videoPlaceholder = videoContainer.querySelector('.video-placeholder');
+    if (videoPlaceholder) {
+      videoPlaceholder.style.display = 'none';
+    }
+
+    if (videoOverlay) {
+      videoOverlay.style.display = 'block';
+    }
+
+    if (demoVideo) {
+      demoVideo.src = videoUrl + '?autoplay=1';
+    }
+  });
 }
-heroStats && statsObserver.observe(heroStats),
-  document.querySelectorAll('.btn-primary, .btn-secondary').forEach((e) => {
-    e.addEventListener('click', function (e) {
+
+// Reset demo video when modal closes
+if (videoModal) {
+  videoModal.addEventListener('transitionend', function (e) {
+    if (!videoModal.classList.contains('active') && videoOverlay && demoVideo) {
+      demoVideo.src = '';
+    }
+  });
+}
+
+/* ============================================
+   4. ANIMATIONS & INTERSECTION OBSERVER
+   ============================================ */
+
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px',
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// Animate elements on scroll
+const animateOnScroll = document.querySelectorAll(
+  '.feature-card, .pricing-card, .faq-item, .single-purchase-card'
+);
+
+animateOnScroll.forEach((element) => {
+  element.style.opacity = '0';
+  element.style.transform = 'translateY(20px)';
+  element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(element);
+});
+
+/* ============================================
+   5. COUNTER ANIMATIONS
+   ============================================ */
+
+// Counter animation function
+function animateCounter(element, target, duration = 2000) {
+  let increment = target / (duration / 16);
+  let current = 0;
+
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = formatNumber(target);
+      clearInterval(timer);
+    } else {
+      element.textContent = formatNumber(Math.floor(current));
+    }
+  }, 16);
+}
+
+// Format numbers with K+ or M+
+function formatNumber(number) {
+  if (number >= 1000000) {
+    return (number / 1000000).toFixed(1) + 'M+';
+  } else if (number >= 1000) {
+    return (number / 1000).toFixed(0) + 'K+';
+  }
+  return number.toString();
+}
+
+// Stats counter observer
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
       if (
-        this.textContent.includes('Start') ||
-        this.textContent.includes('Trial')
+        entry.isIntersecting &&
+        !entry.target.classList.contains('animated')
       ) {
-        let t = this.innerHTML;
-        (this.innerHTML = 'Loading...'),
-          (this.disabled = !0),
-          setTimeout(() => {
-            (this.innerHTML = t),
-              (this.disabled = !1),
-              console.log('Redirecting to signup...');
-          }, 1500);
+        entry.target.classList.add('animated');
+
+        const statNumbers = entry.target.querySelectorAll('.stat-number');
+        statNumbers.forEach((stat) => {
+          let text = stat.textContent;
+
+          if (text.includes('K+')) {
+            let target = 1000 * parseFloat(text);
+            animateCounter(stat, target);
+          } else if (text.includes('M+')) {
+            let target = 1000000 * parseFloat(text);
+            animateCounter(stat, target);
+          } else if (text.includes('/')) {
+            // Skip numbers with slashes (like in pricing)
+            return;
+          }
+        });
       }
     });
-  });
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-  let e = '';
-  sections.forEach((t) => {
-    let o = t.offsetTop;
-    t.clientHeight, pageYOffset >= o - 200 && (e = t.getAttribute('id'));
-  }),
-    navLinks.forEach((t) => {
-      t.classList.remove('active'),
-        t.getAttribute('href') === `#${e}` && t.classList.add('active');
+  },
+  { threshold: 0.5 }
+);
+
+// Observe hero stats
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) {
+  statsObserver.observe(heroStats);
+}
+
+/* ============================================
+   6. PRICING SECTION FUNCTIONALITY (NEW)
+   ============================================ */
+
+function initPricingSection() {
+  // Billing Toggle (Monthly/Yearly)
+  const billingToggleCheckbox = document.getElementById('billing-toggle');
+  const billingOptions = document.querySelectorAll('.billing-option');
+
+  // One-Time Purchase Button
+  const singlePurchaseBtn = document.getElementById('singlePurchaseBtn');
+
+  // Billing Toggle Event Listeners (Monthly/Yearly)
+  if (billingOptions.length && billingToggleCheckbox) {
+    billingOptions.forEach((option) => {
+      option.addEventListener('click', function () {
+        if (this.classList.contains('active')) return;
+
+        // Update active option
+        billingOptions.forEach((opt) => opt.classList.remove('active'));
+        this.classList.add('active');
+
+        // Update checkbox state
+        const billingType = this.dataset.billing;
+        billingToggleCheckbox.checked = billingType === 'yearly';
+        document.body.classList.toggle(
+          'yearly-billing',
+          billingType === 'yearly'
+        );
+      });
     });
-}),
+
+    billingToggleCheckbox.addEventListener('change', function () {
+      const billingType = this.checked ? 'yearly' : 'monthly';
+
+      // Update active option
+      billingOptions.forEach((opt) => opt.classList.remove('active'));
+      const activeOption = document.querySelector(
+        `.billing-option[data-billing="${billingType}"]`
+      );
+      if (activeOption) activeOption.classList.add('active');
+
+      // Update body class
+      document.body.classList.toggle('yearly-billing', this.checked);
+    });
+  }
+
+  // Order Form Functionality (Modal)
+  if (singlePurchaseBtn) {
+    // Create and append modal if it doesn't exist
+    if (!document.getElementById('orderModal')) {
+      const modalHTML = `
+        <div class="modal-overlay" id="orderModal">
+          <div class="modal-content">
+            <button class="modal-close" id="closeOrderModal">&times;</button>
+            <div class="order-form-header">
+              <h3>Order Your Signature</h3>
+              <p> You pay $10 one time — and if SignTry doesn’t meet your expectations,
+        just email us within 14 days and we’ll refund your payment in full.<br>
+        No questions asked.</p>
+            </div>
+            <div class="order-options">
+              <div class="order-option" style="text-align: center;">
+                <button style="margin-bottom: 10px;" class="btn-primary" id="quickOrderBtn">Quick Order - $10</button>
+                <p>We'll contact you in 15 min via email to collect your signature details.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    const orderModal = document.getElementById('orderModal');
+    const closeOrderModal = document.getElementById('closeOrderModal');
+    const quickOrderBtn = document.getElementById('quickOrderBtn');
+
+    // Open order modal
+    singlePurchaseBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      orderModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close order modal
+    if (closeOrderModal) {
+      closeOrderModal.addEventListener('click', function () {
+        orderModal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Close modal when clicking outside
+    if (orderModal) {
+      orderModal.addEventListener('click', function (e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Quick order (email)
+    if (quickOrderBtn) {
+      quickOrderBtn.addEventListener('click', function () {
+        const orderLink = `https://buy.stripe.com/cNi6oGeER2vo0NU1Ng93y00`;
+        window.location.href = orderLink;
+
+        // Close modal after a delay
+        setTimeout(() => {
+          orderModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }, 500);
+      });
+    }
+  }
+}
+
+/* ============================================
+   7. BUTTON LOADING STATES
+   ============================================ */
+
+function initButtonLoading() {
+  document
+    .querySelectorAll('.btn-primary, .btn-secondary')
+    .forEach((button) => {
+      button.addEventListener('click', function (e) {
+        // Only apply loading state to signup/trial buttons
+        if (
+          this.textContent.includes('Start') ||
+          this.textContent.includes('Trial') ||
+          this.textContent.includes('Get Started')
+        ) {
+          let originalHTML = this.innerHTML;
+          this.innerHTML = 'Loading...';
+          this.disabled = true;
+
+          setTimeout(() => {
+            this.innerHTML = originalHTML;
+            this.disabled = false;
+            console.log('Redirecting to signup...');
+            // In production, this would be an actual redirect
+            // window.location.href = 'https://app.signtry.com/signup';
+          }, 1500);
+        }
+      });
+    });
+}
+
+/* ============================================
+   8. PARALLAX EFFECTS
+   ============================================ */
+
+function initParallax() {
   window.addEventListener('scroll', () => {
-    let e = window.pageYOffset,
-      t = document.querySelectorAll('.gradient-orb');
-    t.forEach((t, o) => {
-      let a = (o + 1) * 0.5;
-      t.style.transform = `translate(${e * a * 0.1}px, ${e * a * 0.1}px)`;
+    const scrollPosition = window.pageYOffset;
+    const gradientOrbs = document.querySelectorAll('.gradient-orb');
+
+    gradientOrbs.forEach((orb, index) => {
+      let speed = (index + 1) * 0.5;
+      orb.style.transform = `translate(${scrollPosition * speed * 0.1}px, ${
+        scrollPosition * speed * 0.1
+      }px)`;
     });
-  }),
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('SignTry landing page loaded');
-    let e = document.querySelector('.hero-content');
-    e &&
-      setTimeout(() => {
-        (e.style.opacity = '1'), (e.style.transform = 'translateY(0)');
-      }, 100);
-    let t = document.getElementById('billing-toggle');
-    t &&
-      t.addEventListener('change', function () {
-        this.checked
-          ? document.body.classList.add('yearly-billing')
-          : document.body.classList.remove('yearly-billing');
+  });
+}
+
+/* ============================================
+   9. TAB FUNCTIONALITY (SCREENSHOTS)
+   ============================================ */
+
+function initTabs() {
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  if (tabButtons.length && tabContents.length) {
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        console.log('Tab clicked:', button.getAttribute('data-tab'));
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach((btn) => btn.classList.remove('active'));
+        tabContents.forEach((content) => content.classList.remove('active'));
+
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        // Show corresponding tab content
+        const tabId = button.getAttribute('data-tab') + '-tab';
+        const tabContent = document.getElementById(tabId);
+
+        if (tabContent) {
+          tabContent.classList.add('active');
+          console.log('Showing tab:', tabId);
+        } else {
+          console.error('Tab content not found:', tabId);
+        }
       });
-    let o = document.querySelectorAll('.tab-button'),
-      a = document.querySelectorAll('.tab-content');
-    o.forEach((e) => {
-      e.addEventListener('click', () => {
-        console.log('Tab clicked:', e.getAttribute('data-tab')),
-          o.forEach((e) => e.classList.remove('active')),
-          a.forEach((e) => e.classList.remove('active')),
-          e.classList.add('active');
-        let t = e.getAttribute('data-tab') + '-tab',
-          n = document.getElementById(t);
-        n
-          ? (n.classList.add('active'), console.log('Showing tab:', t))
-          : console.error('Tab not found:', t);
-      });
-    }),
-      console.log('Tab buttons found:', o.length),
-      console.log('Tab contents found:', a.length);
-  }),
+    });
+
+    console.log('Tab buttons found:', tabButtons.length);
+    console.log('Tab contents found:', tabContents.length);
+  }
+}
+
+/* ============================================
+   10. ANTI-COPY PROTECTION
+   ============================================ */
+
+function initAntiCopy() {
+  // Prevent dragging images
   document.addEventListener('dragstart', function (e) {
-    'IMG' === e.target.tagName && e.preventDefault();
-  }),
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+
+  // Prevent text selection on protected elements
   document.addEventListener('selectstart', function (e) {
-    (e.target.closest('.signature-card-wrapper') ||
-      e.target.closest('.example-placeholder')) &&
+    if (
+      e.target.closest('.signature-card-wrapper') ||
+      e.target.closest('.example-placeholder')
+    ) {
       e.preventDefault();
-  }),
+    }
+  });
+
+  // Prevent copying email addresses
   document.addEventListener('copy', function (e) {
-    (window.getSelection().toString().includes('@') ||
-      e.target.closest('.signature-protected')) &&
+    if (
+      window.getSelection().toString().includes('@') ||
+      e.target.closest('.signature-protected')
+    ) {
       e.preventDefault();
-  }),
+    }
+  });
+
+  // Prevent cutting
   document.addEventListener('cut', function (e) {
     e.preventDefault();
   });
+}
+
+/* ============================================
+   11. EMAIL VALIDATION (UTILITY)
+   ============================================ */
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+/* ============================================
+   12. INITIALIZATION ON DOM LOAD
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('SignTry landing page loaded');
+
+  // Initialize all modules
+  initPricingSection();
+  initButtonLoading();
+  initParallax();
+  initTabs();
+  initAntiCopy();
+
+  // Hero content animation
+  const heroContent = document.querySelector('.hero-content');
+  if (heroContent) {
+    setTimeout(() => {
+      heroContent.style.opacity = '1';
+      heroContent.style.transform = 'translateY(0)';
+    }, 100);
+  }
+
+  // Log initialization
+  console.log('All modules initialized successfully');
+});
+
+/* ============================================
+   13. WINDOW LOAD EVENT
+   ============================================ */
+
+window.addEventListener('load', () => {
+  // Any additional initialization that requires all resources to be loaded
+  console.log('Page fully loaded');
+});
+
+/* ============================================
+   14. ERROR HANDLING
+   ============================================ */
+
+window.addEventListener('error', (e) => {
+  console.error(
+    'JavaScript Error:',
+    e.message,
+    'at',
+    e.filename,
+    ':',
+    e.lineno
+  );
+});
+
+// Global error handler for unhandled promise rejections
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled Promise Rejection:', e.reason);
+});

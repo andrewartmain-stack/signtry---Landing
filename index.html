@@ -25,7 +25,7 @@
     <!-- Open Graph теги -->
     <meta property="og:title" content="SignTry - Email Signature Generator & Builder">
     <meta property="og:description"
-        content="Create professional email signatures in 60 seconds. Email signature maker with tracking and analytics.">
+        content="Create professional email signatures in 2 minutes. Email signature maker with tracking and analytics.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://signtry.com/">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -55,6 +55,7 @@
 </head>
 
 <body>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -69,7 +70,7 @@
                 <a href="#faq">FAQ</a>
                 <a href="/blog.html">Blog</a>
                 <a class="btn-secondary" href="https://app.signtry.com/login">Sign In</a>
-                <a class="btn-primary" href="https://app.signtry.com/signup">Get Started</a>
+                <a class="btn-primary" href="https://signtry.com/#pricing">Get Started</a>
             </div>
             <button class="nav-toggle" id="navToggle">
                 <span></span>
@@ -83,39 +84,178 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
+                <!-- <div class="hero-badge">
                     <img src="./images/icons/star-icon.png" style="width: 15px;" alt="icon">
-                    Cancel Anytime
-                </div>
-                <div class="hero-badge">
-                    <img src="./images/icons/star-icon.png" style="width: 15px;" alt="icon">
-                    14-Day Money-Back Guarantee
-                </div>
+                    Increase your reply rate by 42%
+                    ✨ Limited launch discount — 15% OFF for new users
+                </div> -->
                 <h1 class="hero-title">
                     Create Email Signatures<br>
-                    in Under 60 Seconds
+                    in Under 2 Minutes
                 </h1>
                 <p class="hero-description">
                     Use our email signature generator to build beautiful, trackable email signatures with zero coding.
                     Create signatures for Outlook, Gmail, and all major email clients. Track clicks, monitor analytics,
                     and add verified badges.
                 </p>
+                <style>
+                    .signtry-video-wrapper {
+                        position: relative;
+                        width: 100%;
+                        max-width: 480px;
+                        border-radius: 16px;
+                        overflow: hidden;
+                        margin: 0 auto;
+                        margin-bottom: 20px;
+                        cursor: pointer;
+                    }
+
+                    .signtry-video {
+                        width: 100%;
+                        display: block;
+                        border-radius: 16px;
+                    }
+
+                    .signtry-overlay {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: rgba(0, 0, 0, 0.6);
+                        color: #fff;
+                        padding: 6px 14px;
+                        font-size: 15px;
+                        border-radius: 10px;
+                        opacity: 1;
+                        pointer-events: none;
+                        text-align: center;
+                        transition: opacity 0.6s ease;
+                        animation: pulse 2s infinite;
+                    }
+
+                    /* ✨ лёгкое пульсирование */
+                    @keyframes pulse {
+                        0% {
+                            transform: translate(-50%, -50%) scale(1);
+                            opacity: 1;
+                        }
+
+                        50% {
+                            transform: translate(-50%, -50%) scale(1.05);
+                            opacity: 0.9;
+                        }
+
+                        100% {
+                            transform: translate(-50%, -50%) scale(1);
+                            opacity: 1;
+                        }
+                    }
+                </style>
+
+                <div class="signtry-video-wrapper" id="signtryWrapper">
+                    <video class="signtry-video" id="signtryVideo" autoplay muted playsinline preload="auto">
+                        <source src="./hero.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="signtry-overlay" id="signtryOverlay">
+                        Your video has already started<br>
+                        <img src="./images/sound-off.png" width="50"><br>
+                        Click to listen
+                    </div>
+                </div>
+
+                <script>
+                    const video = document.getElementById("signtryVideo");
+                    const overlay = document.getElementById("signtryOverlay");
+                    const wrapper = document.getElementById("signtryWrapper");
+
+                    let userInteracted = false;
+
+                    wrapper.addEventListener("click", () => {
+                        userInteracted = true;
+
+                        // Toggle play/pause
+                        if (!video.paused && !video.muted) {
+                            video.pause();
+                            return;
+                        } else if (!video.paused && video.muted) {
+                            // Unmute without pausing playback
+                            video.muted = false;
+                            video.volume = 1;
+                        } else {
+                            video.play();
+                        }
+
+                        // First interaction → hide overlay and enable sound
+                        if (video.muted) {
+                            video.muted = false;
+                            video.volume = 1;
+                        }
+
+                        overlay.style.opacity = 0;
+                        setTimeout(() => overlay.style.display = "none", 600);
+                    });
+
+                    // When video ends and user didn't click → restart silently with overlay
+                    video.addEventListener("ended", () => {
+                        if (!userInteracted) {
+                            video.currentTime = 0;
+                            video.play(); // stays muted, overlay stays visible
+                        }
+                    });
+                </script>
                 <div class="hero-buttons">
-                    <a href="https://app.signtry.com/signup" class="btn-primary btn-large">
-                        Get Started Now
+                    <a href="https://signtry.com/#pricing" class="btn-primary btn-large">
+                        Boost your reply rate by up to 42% now
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <!-- <button class="btn-demo" id="watchDemoBtn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" />
-                            <path d="M8 6L14 10L8 14V6Z" fill="currentColor" />
-                        </svg>
-                        Watch 60s Demo
-                    </button> -->
                 </div>
+
+                <style>
+                    .hero-trust-row {
+                        margin-top: 12px;
+                        display: flex;
+                        justify-content: center;
+                        gap: 22px;
+                        font-size: 14px;
+                        color: #4a4a4a;
+                        opacity: 0.9;
+                    }
+
+                    .hero-trust-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        white-space: nowrap;
+                    }
+
+                    .hero-trust-item img {
+                        width: 16px;
+                        height: 16px;
+                        opacity: 0.9;
+                    }
+
+                    @media (max-width: 480px) {
+                        .hero-trust-row {
+                            flex-direction: column;
+                            gap: 6px;
+                        }
+                    }
+                </style>
+
+                <div class="hero-trust-row">
+                    <div class="hero-trust-item">
+                        <span>🛡️14-Day Money-Back Guarantee</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span>✨15% OFF for New Users — Limited Launch Offer</span>
+                    </div>
+                </div>
+
+
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number">100+</div>
@@ -132,32 +272,24 @@
                         <div class="stat-label">Signatures Created</div>
                     </div>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <!-- Dashboard image container -->
-                <div class="dashboard-container">
-                    <img src="./images/chrome_CDjbpJ0pem.png" alt="Signtry Dashboard" class="dashboard-image">
+                <div class="signatures-overlay">
+                    <!-- Signature 1 -->
+                    <div class="signature-item signature-1">
+                        <div class="signature-card-wrapper" style="scale: 0.6;">
+                            <!-- Ваша первая сигнатура HTML -->
+                            <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                                style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding:15px;">
+                                        <!-- Main row: social + photo + details -->
+                                        <table cellspacing="0" cellpadding="0" border="0"
+                                            style="border-collapse: collapse;">
+                                            <tr>
+                                                <!-- Social Icons Column (Left Side) -->
 
-                    <!-- Animated signatures overlay -->
-                    <div class="signatures-overlay">
-                        <!-- Signature 1 -->
-                        <div class="signature-item signature-1">
-                            <div class="signature-card-wrapper" style="scale: 1.3;">
-                                <!-- Ваша первая сигнатура HTML -->
-                                <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
-                                    style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
-                                    <tr>
-                                        <td style="padding:5px;">
-                                            <!-- Main row: social + photo + details -->
-                                            <table cellspacing="0" cellpadding="0" border="0"
-                                                style="border-collapse: collapse;">
-                                                <tr>
-                                                    <!-- Social Icons Column (Left Side) -->
-
-                                                    <td valign="middle"
-                                                        style="padding-right:15px; vertical-align:middle;">
-                                                        <!-- Outer wrapper with border radius & gradient -->
-                                                        <table cellspacing="0" cellpadding="0" border="0" style="
+                                                <td valign="middle" style="padding-right:15px; vertical-align:middle;">
+                                                    <!-- Outer wrapper with border radius & gradient -->
+                                                    <table cellspacing="0" cellpadding="0" border="0" style="
                 border-collapse:separate;
                 border:1px solid #e0e0e0;
                 border-radius:4px;
@@ -166,54 +298,51 @@
                 overflow:hidden;
                 mso-border-alt: none;
               ">
-                                                            <tr>
-                                                                <td style="padding:6px; vertical-align:top;">
-                                                                    <!-- Inner table for icon list -->
-                                                                    <table cellspacing="0" cellpadding="0" border="0"
-                                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td style="padding:6px; vertical-align:top;">
+                                                                <!-- Inner table for icon list -->
+                                                                <table cellspacing="0" cellpadding="0" border="0"
+                                                                    style="border-collapse:collapse;">
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="linkedin"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/linkedin/linkedin.gif"
-                                                                                        alt="LinkedIn"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
-
-
-
-
-
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="facebook"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
-                                                                                        alt="Facebook"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="linkedin"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/linkedin/linkedin.gif"
+                                                                                    alt="LinkedIn"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="instagram"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
-                                                                                        alt="Instagram"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
+
+
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="facebook"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                                    alt="Facebook"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="instagram"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                                    alt="Instagram"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
@@ -222,141 +351,140 @@
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="website"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
-                                                                                        alt="Website"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
-
-
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-
-
-                                                    <!-- Image Column -->
-                                                    <td valign="middle" width="100"
-                                                        style="width:100px; vertical-align:middle;">
-
-                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/avatar.jpg"
-                                                            alt="Your Photo"
-                                                            style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
-
-                                                    </td>
-
-                                                    <!-- Details Column -->
-                                                    <td valign="middle"
-                                                        style="padding-left:15px; vertical-align:middle;">
-
-                                                        <table role="presentation" cellspacing="0" cellpadding="0"
-                                                            border="0"
-                                                            style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
-                                                            <tr>
-                                                                <td style="line-height:0;">
-                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/svgviewer-png-output.png"
-                                                                        alt="Company Logo"
-                                                                        style="display:block; height:20px; width:auto; margin:0 auto;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Name -->
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
-                                                                    Andrew Artemov
-
-                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge1.gif"
-                                                                        alt="Badge"
-                                                                        style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
-
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-                                                        <!-- Job Title -->
-
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
-                                                                    CEO
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Company -->
-
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
-                                                                    <strong>SignTry.com</strong>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Email -->
-
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td>
-                                                                    <a id="email"
-                                                                        style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
-                                                                        andrew@signtry.com
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Phone -->
-
-
-                                                        <!-- Buttons -->
 
 
 
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="website"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                                    alt="Website"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+
+                                                <!-- Image Column -->
+                                                <td valign="middle" width="100"
+                                                    style="width:100px; vertical-align:middle;">
+
+                                                    <img src="./images/micah-1765257724607.png" alt="Your Photo"
+                                                        style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
+
+                                                </td>
+
+                                                <!-- Details Column -->
+                                                <td valign="middle" style="padding-left:15px; vertical-align:middle;">
+
+                                                    <table role="presentation" cellspacing="0" cellpadding="0"
+                                                        border="0"
+                                                        style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
+                                                        <tr>
+                                                            <td style="line-height:0;">
+                                                                <img src="./images/logo-full.png" alt="Company Logo"
+                                                                    style="display:block; height:20px; width:auto; margin:0 auto;" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Name -->
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
+                                                                Andrew Artemov
+
+                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge1.gif"
+                                                                    alt="Badge"
+                                                                    style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+                                                    <!-- Job Title -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                                CEO
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Company -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                                <strong>SignTry.com</strong>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Email -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td>
+                                                                <a id="email"
+                                                                    style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                                    andrew@signtry.com
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Phone -->
+
+
+                                                    <!-- Buttons -->
+
+
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
+                    </div>
 
-                        <!-- Signature 2 -->
-                        <div class="signature-item signature-2">
-                            <div class="signature-card-wrapper" style="scale: 1.2;">
-                                <!-- Ваша вторая сигнатура HTML -->
-                                <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
-                                    style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
-                                    <tr>
-                                        <td style="padding:5px;">
-                                            <table cellspacing="0" cellpadding="0" border="0"
-                                                style="border-collapse:collapse;">
-                                                <tr>
+                    <!-- Signature 2 -->
+                    <div class="signature-item signature-2">
+                        <div class="signature-card-wrapper" style="scale: 0.8;">
+                            <!-- Ваша вторая сигнатура HTML -->
+                            <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                                style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding:15px;">
+                                        <table cellspacing="0" cellpadding="0" border="0"
+                                            style="border-collapse:collapse;">
+                                            <tr>
 
-                                                    <td valign="middle"
-                                                        style="padding-right:8px; vertical-align:middle;">
-                                                        <!-- Outer wrapper with border radius & gradient -->
-                                                        <table cellspacing="0" cellpadding="0" border="0" style="
+                                                <td valign="middle" style="padding-right:8px; vertical-align:middle;">
+                                                    <!-- Outer wrapper with border radius & gradient -->
+                                                    <table cellspacing="0" cellpadding="0" border="0" style="
                 border-collapse:separate;
                 border:1px solid #e0e0e0;
                 border-radius:4px;
@@ -365,200 +493,197 @@
                 overflow:hidden;
                 mso-border-alt: none;
               ">
-                                                            <tr>
-                                                                <td
-                                                                    style="padding:6px; border-radius:8px; vertical-align:top;">
-                                                                    <!-- Inner table for icon list -->
-                                                                    <table cellspacing="0" cellpadding="0" border="0"
-                                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="padding:6px; border-radius:8px; vertical-align:top;">
+                                                                <!-- Inner table for icon list -->
+                                                                <table cellspacing="0" cellpadding="0" border="0"
+                                                                    style="border-collapse:collapse;">
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="linkedin"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/linkedin/linkedin.gif"
-                                                                                        alt="LinkedIn"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
-
-
-
-
-
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="facebook"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
-                                                                                        alt="Facebook"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="linkedin"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/linkedin/linkedin.gif"
+                                                                                    alt="LinkedIn"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="instagram"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
-                                                                                        alt="Instagram"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
+
+
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="facebook"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                                    alt="Facebook"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="instagram"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                                    alt="Instagram"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="github"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/github/github.gif"
-                                                                                        alt="GitHub"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
+
+
+
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="github"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/github/github.gif"
+                                                                                    alt="GitHub"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
 
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
 
 
-                                                    <!-- Details Column - Flexible width based on content -->
-                                                    <td valign="middle"
-                                                        style="vertical-align:middle; padding-right:10px;">
+                                                <!-- Details Column - Flexible width based on content -->
+                                                <td valign="middle" style="vertical-align:middle; padding-right:10px;">
 
-                                                        <table role="presentation" cellspacing="0" cellpadding="0"
-                                                            border="0"
-                                                            style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
-                                                            <tr>
-                                                                <td style="line-height:0;">
-                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/chrome_kv3KW7hrET.png"
-                                                                        alt="Company Logo"
-                                                                        style="display:block; height:28px; width:auto; margin:0 auto;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Name -->
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 15px; font-weight: bold;; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
-                                                                    Michael Smith
-
-                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge1.gif"
-                                                                        alt="Badge"
-                                                                        style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
-
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-                                                        <!-- Job Title - Conditional Block -->
-
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 12px; ; color: #555555; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
-                                                                    CEO
-                                                                </td>
-                                                            </tr>
-                                                        </table>
+                                                    <table role="presentation" cellspacing="0" cellpadding="0"
+                                                        border="0"
+                                                        style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
+                                                        <tr>
+                                                            <td style="line-height:0;">
+                                                                <img src="./images/logoipsum-custom-logo.svg"
+                                                                    alt="Company Logo"
+                                                                    style="display:block; height:18px; width:auto; margin:0 auto;" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
 
 
-                                                        <!-- Company - Conditional Block -->
+                                                    <!-- Name -->
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 15px; font-weight: bold;; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                                Michael Smith
 
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 12px; ; color: #222222; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
-                                                                    <strong>Echowave</strong>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
+                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge1.gif"
+                                                                    alt="Badge"
+                                                                    style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
 
+                                                            </td>
+                                                        </tr>
+                                                    </table>
 
-                                                        <!-- Email - Conditional Block -->
+                                                    <!-- Job Title - Conditional Block -->
 
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td>
-                                                                    <a id="email"
-                                                                        style="color:#1155cc; text-decoration: none; font-size: 12px; ; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
-                                                                        michael.s@ew.co
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Phone - Conditional Block -->
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 12px; ; color: #555555; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                                CEO
+                                                            </td>
+                                                        </tr>
+                                                    </table>
 
 
-                                                        <!-- Buttons -->
+                                                    <!-- Company - Conditional Block -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 12px; ; color: #222222; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                                <strong>Echowave</strong>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Email - Conditional Block -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td>
+                                                                <a id="email"
+                                                                    style="color:#1155cc; text-decoration: none; font-size: 12px; ; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                                    michael.s@ew.co
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Phone - Conditional Block -->
+
+
+                                                    <!-- Buttons -->
 
 
 
-                                                    </td>
+                                                </td>
 
-                                                    <!-- Photo Column - Fixed position -->
-                                                    <td valign="middle" width="100"
-                                                        style="width:100px; vertical-align:middle;">
+                                                <!-- Photo Column - Fixed position -->
+                                                <td valign="middle" width="100"
+                                                    style="width:100px; vertical-align:middle;">
 
-                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/Michael.png"
-                                                            alt="Your Photo"
-                                                            style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
+                                                    <img src="./images/micah-1765257784243.png" alt="Your Photo"
+                                                        style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
 
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
+                    </div>
 
-                        <!-- Signature 3 -->
-                        <div class="signature-item signature-3">
-                            <div class="signature-card-wrapper">
-                                <!-- Ваша третья сигнатура HTML -->
-                                <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
-                                    style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
-                                    <tr>
-                                        <td style="padding:5px;">
-                                            <!-- Main row: social + photo + details -->
-                                            <table cellspacing="0" cellpadding="0" border="0"
-                                                style="border-collapse: collapse;">
-                                                <tr>
-                                                    <!-- Social Icons Column (Left Side) -->
+                    <!-- Signature 3 -->
+                    <div class="signature-item signature-3">
+                        <div class="signature-card-wrapper" style="scale: 0.5;">
+                            <!-- Ваша третья сигнатура HTML -->
+                            <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                                style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding:15px;">
+                                        <!-- Main row: social + photo + details -->
+                                        <table cellspacing="0" cellpadding="0" border="0"
+                                            style="border-collapse: collapse;">
+                                            <tr>
+                                                <!-- Social Icons Column (Left Side) -->
 
-                                                    <td valign="middle"
-                                                        style="padding-right:15px; vertical-align:middle;">
-                                                        <!-- Outer wrapper with border radius & gradient -->
-                                                        <table cellspacing="0" cellpadding="0" border="0" style="
+                                                <td valign="middle" style="padding-right:15px; vertical-align:middle;">
+                                                    <!-- Outer wrapper with border radius & gradient -->
+                                                    <table cellspacing="0" cellpadding="0" border="0" style="
                 border-collapse:separate;
                 border:1px solid #e0e0e0;
                 border-radius:4px;
@@ -567,209 +692,188 @@
                 overflow:hidden;
                 mso-border-alt: none;
               ">
-                                                            <tr>
-                                                                <td style="padding:6px; vertical-align:top;">
-                                                                    <!-- Inner table for icon list -->
-                                                                    <table cellspacing="0" cellpadding="0" border="0"
-                                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td style="padding:6px; vertical-align:top;">
+                                                                <!-- Inner table for icon list -->
+                                                                <table cellspacing="0" cellpadding="0" border="0"
+                                                                    style="border-collapse:collapse;">
 
 
 
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="facebook"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
-                                                                                        alt="Facebook"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="facebook"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                                    alt="Facebook"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="instagram"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
-                                                                                        alt="Instagram"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="instagram"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                                    alt="Instagram"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="whatsapp"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/whatsapp/whatsapp.gif"
-                                                                                        alt="WhatsApp"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
-
-
-
-
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="whatsapp"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/whatsapp/whatsapp.gif"
+                                                                                    alt="WhatsApp"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
 
 
 
 
 
-                                                                        <tr>
-                                                                            <td style="padding:3px 0;">
-                                                                                <a id="website"
-                                                                                    style="display:inline-block; text-decoration:none;">
-                                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
-                                                                                        alt="Website"
-                                                                                        style="display:block; width:15px; height:15px; border:0;" />
-                                                                                </a>
-                                                                            </td>
-                                                                        </tr>
-
-
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-
-
-                                                    <!-- Image Column -->
-                                                    <td valign="middle" width="100"
-                                                        style="width:100px; vertical-align:middle;">
-
-                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/4c32e4a4-59a6-4b30-8af2-9234674d84f0.png"
-                                                            alt="Your Photo"
-                                                            style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
-
-                                                    </td>
-
-                                                    <!-- Details Column -->
-                                                    <td valign="middle"
-                                                        style="padding-left:15px; vertical-align:middle;">
-
-
-                                                        <!-- Name -->
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
-                                                                    Lena Duarte
-
-                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge2.gif"
-                                                                        alt="Badge"
-                                                                        style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
-
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-                                                        <!-- Job Title -->
-
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
-                                                                    Salon Manager
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Company -->
-
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td
-                                                                    style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
-                                                                    <strong>arogantbeauty</strong>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Email -->
-
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td>
-                                                                    <a id="email"
-                                                                        style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
-                                                                        info@arogantb.ro
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                        <!-- Phone -->
-
-
-                                                        <!-- Buttons -->
 
 
 
-                                                        <table cellspacing="0" cellpadding="0" border="0"
-                                                            style="border-collapse:collapse;">
-                                                            <tr>
-                                                                <td>
-                                                                    <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/f90322b2-6919-4bfe-a8be-38e6a266f755.png"
-                                                                        alt="signature"
-                                                                        style="height:35px; display:block; width:auto;" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
 
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                                                                    <tr>
+                                                                        <td style="padding:3px 0;">
+                                                                            <a id="website"
+                                                                                style="display:inline-block; text-decoration:none;">
+                                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                                    alt="Website"
+                                                                                    style="display:block; width:15px; height:15px; border:0;" />
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+
+                                                <!-- Image Column -->
+                                                <td valign="middle" width="100"
+                                                    style="width:100px; vertical-align:middle;">
+
+                                                    <img src="./images/micah-1765257802682.png" alt="Your Photo"
+                                                        style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
+
+                                                </td>
+
+                                                <!-- Details Column -->
+                                                <td valign="middle" style="padding-left:15px; vertical-align:middle;">
+
+
+                                                    <!-- Name -->
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
+                                                                Lena Duarte
+
+                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge2.gif"
+                                                                    alt="Badge"
+                                                                    style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+                                                    <!-- Job Title -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                                Salon Manager
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Company -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td
+                                                                style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                                <strong>arogantbeauty</strong>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Email -->
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td>
+                                                                <a id="email"
+                                                                    style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                                    info@arogantb.ro
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                    <!-- Phone -->
+
+
+                                                    <!-- Buttons -->
+
+
+
+                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                        style="border-collapse:collapse;">
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/f90322b2-6919-4bfe-a8be-38e6a266f755.png"
+                                                                    alt="signature"
+                                                                    style="height:35px; display:block; width:auto;" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-        </div>
     </section>
-
-    <!-- Trusted By Section
-    <section class="trusted-by">
-        <div class="container">
-            <p class="trusted-label">Trusted by professionals at leading companies</p>
-            <div class="company-logos">
-                <div class="company-logo">Google</div>
-                <div class="company-logo">Microsoft</div>
-                <div class="company-logo">Amazon</div>
-                <div class="company-logo">Salesforce</div>
-                <div class="company-logo">Adobe</div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Top User Examples Section -->
     <section class="user-examples" id="examples">
         <img class="curved-arrow" src="./images/icons/curved-arrow-1.png" alt="arrow">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><i>Email Signature</i>
+                <h2 class="section-title">Email Signature
                     Templates & Examples
                 </h2>
                 <p class="section-description">See how professionals are using SignTry to enhance their email presence
@@ -781,7 +885,7 @@
                     <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
                         style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
                         <tr>
-                            <td style="padding:5px;">
+                            <td style="padding:15px;">
                                 <table cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;">
                                     <tr>
 
@@ -955,8 +1059,7 @@
                                         <!-- Photo Column - Fixed position -->
                                         <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
 
-                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/Michael.png"
-                                                alt="Your Photo"
+                                            <img src="./images/micah-1765257724607.png" alt="Your Photo"
                                                 style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
 
                                         </td>
@@ -974,7 +1077,7 @@
                     <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
                         style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
                         <tr>
-                            <td style="padding:5px;">
+                            <td style="padding:15px;">
                                 <!-- Details Column - Flexible width based on content -->
                                 <table cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;">
                                     <tr>
@@ -1077,8 +1180,7 @@
                                         <!-- Photo Column - Fixed position -->
                                         <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
 
-                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/c6c43190-bae4-4fff-bf9b-9d5b6031c271.png"
-                                                alt="Your Photo"
+                                            <img src="./images/micah-1765257784243.png" alt="Your Photo"
                                                 style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
 
                                         </td>
@@ -1194,7 +1296,7 @@
                     <table bgcolor="#ffffff" role="presentation" cellspacing="0" cellpadding="0" border="0"
                         style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:10px; border-collapse: collapse;">
                         <tr>
-                            <td style="padding:5px;">
+                            <td style="padding:15px;">
 
                                 <!-- Main row: photo + details -->
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0"
@@ -1204,8 +1306,7 @@
                                         <!-- Image Column -->
                                         <td valign="top" width="100" style="width:100px; vertical-align:top;">
 
-                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/e2caeb74-8e7a-480f-8c2f-e8258b10752e.png"
-                                                alt="Your Photo"
+                                            <img src="./images/micah-1765257797819.png" alt="Your Photo"
                                                 style="display:block; width:100px; height:100px; border:0; border-radius: 20px !important;" />
 
                                         </td>
@@ -1372,7 +1473,7 @@
                     <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
                         style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:10px; border-collapse: collapse;">
                         <tr>
-                            <td style="padding:5px;">
+                            <td style="padding:15px;">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0"
                                     style="border-collapse: collapse;">
                                     <tr>
@@ -1525,8 +1626,7 @@
                                         <!-- Photo Column - Fixed position -->
                                         <td valign="top" width="100" style="width:100px; vertical-align:top;">
 
-                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/ef9be890-5241-46de-a541-062f7060fb48.png"
-                                                alt="Your Photo"
+                                            <img src="./images/micah-1765257802682.png" alt="Your Photo"
                                                 style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
 
                                         </td>
@@ -1544,7 +1644,7 @@
                     <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
                         style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
                         <tr>
-                            <td style="padding:5px;">
+                            <td style="padding:15px;">
                                 <!-- Main row: social + photo + details -->
                                 <table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;">
                                     <tr>
@@ -1639,8 +1739,7 @@
                                         <!-- Image Column -->
                                         <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
 
-                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/4c32e4a4-59a6-4b30-8af2-9234674d84f0.png"
-                                                alt="Your Photo"
+                                            <img src="./images/micah-1765257861969.png" alt="Your Photo"
                                                 style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
 
                                         </td>
@@ -1740,7 +1839,7 @@
                     <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
                         style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
                         <tr>
-                            <td style="padding:5px;">
+                            <td style="padding:15px;">
                                 <!-- Main row: social + photo + details -->
                                 <table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;">
                                     <tr>
@@ -1835,8 +1934,1129 @@
                                         <!-- Image Column -->
                                         <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
 
-                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/avatar.jpg"
-                                                alt="Your Photo"
+                                            <img src="./images/micah-1765257893204.png" alt="Your Photo"
+                                                style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
+
+                                        </td>
+
+                                        <!-- Details Column -->
+                                        <td valign="middle" style="padding-left:15px; vertical-align:middle;">
+
+                                            <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
+                                                <tr>
+                                                    <td style="line-height:0;">
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/svgviewer-png-output.png"
+                                                            alt="Company Logo"
+                                                            style="display:block; height:20px; width:auto; margin:0 auto;" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Name -->
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
+                                                        Andrew Artemov
+
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge1.gif"
+                                                            alt="Badge"
+                                                            style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <!-- Job Title -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        CEO
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Company -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        <strong>SignTry.com</strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Email -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <a id="email"
+                                                            style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                            andrew@signtry.com
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Phone -->
+
+
+                                            <!-- Buttons -->
+
+
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- End of Email Signature -->
+
+
+
+                </div>
+                <div class="example-placeholder">
+                    <!-- Photo on Right -->
+                    <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                        style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:10px; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding:15px;">
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                                    style="border-collapse: collapse;">
+                                    <tr>
+                                        <!-- Details Column - Flexible width based on content -->
+                                        <td valign="top" style="vertical-align:top; padding-right:10px;">
+
+                                            <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
+                                                <tr>
+                                                    <td style="line-height:0;">
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/logoipsum-custom-logo.png"
+                                                            alt="Company Logo"
+                                                            style="display:block; height:28px; width:auto; margin:0 auto;" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Name -->
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 15px; font-weight: bold;; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                        Sophie Reynolds
+
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge4.gif"
+                                                            alt="Badge"
+                                                            style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <!-- Job Title - Conditional Block -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color: #555555; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                        Managing Partner
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Company - Conditional Block -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color: #222222; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                        <strong>Snugnova</strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Email - Conditional Block -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <a id="email"
+                                                            style="color:#1155cc; text-decoration: none; font-size: 12px; ; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                            sophiere@gmail.com
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Phone - Conditional Block -->
+
+
+                                            <!-- Buttons -->
+
+
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+
+
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="facebook" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                alt="Facebook"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="instagram" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                alt="Instagram"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="whatsapp" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/whatsapp/whatsapp.gif"
+                                                                alt="WhatsApp"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="tiktok" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/tiktok/tiktok.gif"
+                                                                alt="TikTok"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+
+
+                                                    <td style="padding-top: 5px;">
+                                                        <a id="website" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                alt="Website"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+
+
+
+                                        </td>
+
+                                        <!-- Photo Column - Fixed position -->
+                                        <td valign="top" width="100" style="width:100px; vertical-align:top;">
+
+                                            <img src="./images/micah-1765257802682.png" alt="Your Photo"
+                                                style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                </div>
+                <div class="example-placeholder">
+                    <!-- Start of Email Signature Icons Vertical Left -->
+                    <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                        style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding:15px;">
+                                <!-- Main row: social + photo + details -->
+                                <table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;">
+                                    <tr>
+                                        <!-- Social Icons Column (Left Side) -->
+
+                                        <td valign="middle" style="padding-right:15px; vertical-align:middle;">
+                                            <!-- Outer wrapper with border radius & gradient -->
+                                            <table cellspacing="0" cellpadding="0" border="0" style="
+                border-collapse:separate;
+                border:1px solid #e0e0e0;
+                border-radius:4px;
+                background: #ffffff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+                overflow:hidden;
+                mso-border-alt: none;
+              ">
+                                                <tr>
+                                                    <td style="padding:6px; vertical-align:top;">
+                                                        <!-- Inner table for icon list -->
+                                                        <table cellspacing="0" cellpadding="0" border="0"
+                                                            style="border-collapse:collapse;">
+
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="facebook"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                            alt="Facebook"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="instagram"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                            alt="Instagram"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="whatsapp"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/whatsapp/whatsapp.gif"
+                                                                            alt="WhatsApp"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="website"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                            alt="Website"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                        <!-- Image Column -->
+                                        <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
+
+                                            <img src="./images/micah-1765257861969.png" alt="Your Photo"
+                                                style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
+
+                                        </td>
+
+                                        <!-- Details Column -->
+                                        <td valign="middle" style="padding-left:15px; vertical-align:middle;">
+
+
+                                            <!-- Name -->
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
+                                                        Lena Duarte
+
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge2.gif"
+                                                            alt="Badge"
+                                                            style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <!-- Job Title -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        Salon Manager
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Company -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        <strong>arogantbeauty</strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Email -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <a id="email"
+                                                            style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                            info@arogantb.ro
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Phone -->
+
+
+                                            <!-- Buttons -->
+
+
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/f90322b2-6919-4bfe-a8be-38e6a266f755.png"
+                                                            alt="signature"
+                                                            style="height:35px; display:block; width:auto;" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- End of Email Signature -->
+
+
+
+                </div>
+                <div class="example-placeholder">
+                    <!-- Start of Email Signature Icons Vertical Left -->
+                    <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                        style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding:15px;">
+                                <!-- Main row: social + photo + details -->
+                                <table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;">
+                                    <tr>
+                                        <!-- Social Icons Column (Left Side) -->
+
+                                        <td valign="middle" style="padding-right:15px; vertical-align:middle;">
+                                            <!-- Outer wrapper with border radius & gradient -->
+                                            <table cellspacing="0" cellpadding="0" border="0" style="
+                border-collapse:separate;
+                border:1px solid #e0e0e0;
+                border-radius:4px;
+                background: #ffffff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+                overflow:hidden;
+                mso-border-alt: none;
+              ">
+                                                <tr>
+                                                    <td style="padding:6px; vertical-align:top;">
+                                                        <!-- Inner table for icon list -->
+                                                        <table cellspacing="0" cellpadding="0" border="0"
+                                                            style="border-collapse:collapse;">
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="linkedin"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/linkedin/linkedin.gif"
+                                                                            alt="LinkedIn"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="facebook"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                            alt="Facebook"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="instagram"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                            alt="Instagram"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+
+
+
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="website"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                            alt="Website"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                        <!-- Image Column -->
+                                        <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
+
+                                            <img src="./images/micah-1765257893204.png" alt="Your Photo"
+                                                style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
+
+                                        </td>
+
+                                        <!-- Details Column -->
+                                        <td valign="middle" style="padding-left:15px; vertical-align:middle;">
+
+                                            <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
+                                                <tr>
+                                                    <td style="line-height:0;">
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/svgviewer-png-output.png"
+                                                            alt="Company Logo"
+                                                            style="display:block; height:20px; width:auto; margin:0 auto;" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Name -->
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
+                                                        Andrew Artemov
+
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge1.gif"
+                                                            alt="Badge"
+                                                            style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <!-- Job Title -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        CEO
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Company -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        <strong>SignTry.com</strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Email -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <a id="email"
+                                                            style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                            andrew@signtry.com
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Phone -->
+
+
+                                            <!-- Buttons -->
+
+
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- End of Email Signature -->
+
+
+
+                </div>
+                <div class="example-placeholder">
+                    <!-- Photo on Right -->
+                    <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                        style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:10px; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding:15px;">
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                                    style="border-collapse: collapse;">
+                                    <tr>
+                                        <!-- Details Column - Flexible width based on content -->
+                                        <td valign="top" style="vertical-align:top; padding-right:10px;">
+
+                                            <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse; margin-bottom:8px; text-align:left;">
+                                                <tr>
+                                                    <td style="line-height:0;">
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/logoipsum-custom-logo.png"
+                                                            alt="Company Logo"
+                                                            style="display:block; height:28px; width:auto; margin:0 auto;" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Name -->
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 15px; font-weight: bold;; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                        Sophie Reynolds
+
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge4.gif"
+                                                            alt="Badge"
+                                                            style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <!-- Job Title - Conditional Block -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color: #555555; padding-bottom: 3px; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                        Managing Partner
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Company - Conditional Block -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color: #222222; line-height: 1.2; word-wrap:break-word; word-break:break-word;">
+                                                        <strong>Snugnova</strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Email - Conditional Block -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <a id="email"
+                                                            style="color:#1155cc; text-decoration: none; font-size: 12px; ; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                            sophiere@gmail.com
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Phone - Conditional Block -->
+
+
+                                            <!-- Buttons -->
+
+
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+
+
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="facebook" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                alt="Facebook"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="instagram" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                alt="Instagram"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="whatsapp" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/whatsapp/whatsapp.gif"
+                                                                alt="WhatsApp"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+
+
+                                                    <td style="padding-right: 8px; padding-top: 5px;">
+                                                        <a id="tiktok" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/tiktok/tiktok.gif"
+                                                                alt="TikTok"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+
+
+
+
+                                                    <td style="padding-top: 5px;">
+                                                        <a id="website" style="display: inline-block;">
+                                                            <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                alt="Website"
+                                                                style="display: block; width: 15px; height: 15px;" />
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+
+
+
+                                        </td>
+
+                                        <!-- Photo Column - Fixed position -->
+                                        <td valign="top" width="100" style="width:100px; vertical-align:top;">
+
+                                            <img src="./images/micah-1765257802682.png" alt="Your Photo"
+                                                style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                </div>
+                <div class="example-placeholder">
+                    <!-- Start of Email Signature Icons Vertical Left -->
+                    <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                        style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding:15px;">
+                                <!-- Main row: social + photo + details -->
+                                <table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;">
+                                    <tr>
+                                        <!-- Social Icons Column (Left Side) -->
+
+                                        <td valign="middle" style="padding-right:15px; vertical-align:middle;">
+                                            <!-- Outer wrapper with border radius & gradient -->
+                                            <table cellspacing="0" cellpadding="0" border="0" style="
+                border-collapse:separate;
+                border:1px solid #e0e0e0;
+                border-radius:4px;
+                background: #ffffff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+                overflow:hidden;
+                mso-border-alt: none;
+              ">
+                                                <tr>
+                                                    <td style="padding:6px; vertical-align:top;">
+                                                        <!-- Inner table for icon list -->
+                                                        <table cellspacing="0" cellpadding="0" border="0"
+                                                            style="border-collapse:collapse;">
+
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="facebook"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                            alt="Facebook"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="instagram"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                            alt="Instagram"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="whatsapp"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/whatsapp/whatsapp.gif"
+                                                                            alt="WhatsApp"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="website"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                            alt="Website"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                        <!-- Image Column -->
+                                        <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
+
+                                            <img src="./images/micah-1765257861969.png" alt="Your Photo"
+                                                style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
+
+                                        </td>
+
+                                        <!-- Details Column -->
+                                        <td valign="middle" style="padding-left:15px; vertical-align:middle;">
+
+
+                                            <!-- Name -->
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 15px; font-weight: bold;; line-height:1.2; padding-bottom:3px; word-wrap:break-word; word-break:break-word;">
+                                                        Lena Duarte
+
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/badges/badge2.gif"
+                                                            alt="Badge"
+                                                            style="width:15px; height:15px; display:inline-block; vertical-align:middle; margin-left:2px; margin-top:-5px;" />
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <!-- Job Title -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#555555; padding-bottom:3px; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        Salon Manager
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Company -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td
+                                                        style="font-size: 12px; ; color:#222222; line-height:1.2; word-wrap:break-word; word-break:break-word;">
+                                                        <strong>arogantbeauty</strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Email -->
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <a id="email"
+                                                            style="color:#1155cc; ; text-decoration:none; font-size:12px; display:block; word-wrap:break-word; word-break:break-all; line-height:1.4;">
+                                                            info@arogantb.ro
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <!-- Phone -->
+
+
+                                            <!-- Buttons -->
+
+
+
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td>
+                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/f90322b2-6919-4bfe-a8be-38e6a266f755.png"
+                                                            alt="signature"
+                                                            style="height:35px; display:block; width:auto;" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- End of Email Signature -->
+
+
+
+                </div>
+                <div class="example-placeholder">
+                    <!-- Start of Email Signature Icons Vertical Left -->
+                    <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
+                        style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:5px; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding:15px;">
+                                <!-- Main row: social + photo + details -->
+                                <table cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;">
+                                    <tr>
+                                        <!-- Social Icons Column (Left Side) -->
+
+                                        <td valign="middle" style="padding-right:15px; vertical-align:middle;">
+                                            <!-- Outer wrapper with border radius & gradient -->
+                                            <table cellspacing="0" cellpadding="0" border="0" style="
+                border-collapse:separate;
+                border:1px solid #e0e0e0;
+                border-radius:4px;
+                background: #ffffff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+                overflow:hidden;
+                mso-border-alt: none;
+              ">
+                                                <tr>
+                                                    <td style="padding:6px; vertical-align:top;">
+                                                        <!-- Inner table for icon list -->
+                                                        <table cellspacing="0" cellpadding="0" border="0"
+                                                            style="border-collapse:collapse;">
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="linkedin"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/linkedin/linkedin.gif"
+                                                                            alt="LinkedIn"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="facebook"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/facebook/facebook.gif"
+                                                                            alt="Facebook"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="instagram"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/instagram/instagram.gif"
+                                                                            alt="Instagram"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+
+
+
+
+
+
+
+
+
+                                                            <tr>
+                                                                <td style="padding:3px 0;">
+                                                                    <a id="website"
+                                                                        style="display:inline-block; text-decoration:none;">
+                                                                        <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/social-icons/website/website.gif"
+                                                                            alt="Website"
+                                                                            style="display:block; width:15px; height:15px; border:0;" />
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                        <!-- Image Column -->
+                                        <td valign="middle" width="100" style="width:100px; vertical-align:middle;">
+
+                                            <img src="./images/micah-1765257893204.png" alt="Your Photo"
                                                 style="display:block; width:100px; height:100px; border:0; border-radius: 5px !important;" />
 
                                         </td>
@@ -1945,7 +3165,7 @@
             </div>
             <div class="steps-container">
                 <div class="step-card">
-                    <div class="step-number">01</div>
+                    <div class="step-number" style="background-color: #e0d1ff !important;">01</div>
                     <h3 class="step-title">Select Your Template</h3>
                     <p class="step-description">Choose from our collection of professionally designed templates that
                         match your industry and style.</p>
@@ -1962,7 +3182,7 @@
                     </div>
                 </div>
                 <div class="step-card">
-                    <div class="step-number">02</div>
+                    <div class="step-number" style="background-color: #f7d67c !important;">02</div>
                     <h3 class="step-title">Customize for Your Brand</h3>
                     <p class="step-description">Add your logo, colors, social links, and contact information. Make it
                         uniquely yours in seconds.</p>
@@ -1976,7 +3196,7 @@
                     </div>
                 </div>
                 <div class="step-card">
-                    <div class="step-number">03</div>
+                    <div class="step-number" style="background-color: #77f3dc !important;">03</div>
                     <h3 class="step-title">Sync Across Platforms</h3>
                     <p class="step-description">Deploy your signature to Gmail, Outlook, and other email clients with
                         one click. Keep everything in sync.</p>
@@ -2052,7 +3272,7 @@
                         </span>
                         With Professional Signature
                     </div>
-                    <div class="email-glow-wrapper">
+                    <div class="email-example" style="position: relative;">
                         <div class="email-mockup">
                             <!-- Notification popups -->
                             <div class="email-popups">
@@ -2089,7 +3309,7 @@
                                         <table bgcolor="#ffffff" cellspacing="0" cellpadding="0" border="0"
                                             style="font-family: Arial, sans-serif; font-size: 12px; color: #333333; background-color:#ffffff; border-radius:10px; border-collapse: collapse;">
                                             <tr>
-                                                <td style="padding:5px;">
+                                                <td style="padding:15px;">
                                                     <table role="presentation" cellspacing="0" cellpadding="0"
                                                         border="0" style="border-collapse: collapse;">
                                                         <tr>
@@ -2254,7 +3474,7 @@
                                                             <td valign="top" width="100"
                                                                 style="width:100px; vertical-align:top;">
 
-                                                                <img src="https://cemhabfosehkygdncxfg.supabase.co/storage/v1/object/public/images/public/8360acba-01fb-43be-bcc0-d53a2b2d559c/ef9be890-5241-46de-a541-062f7060fb48.png"
+                                                                <img src="./images/micah-1765257861969.png"
                                                                     alt="Your Photo"
                                                                     style="display:block; width:100px; height:100px; border:0; border-radius: 10px !important;" />
 
@@ -2270,20 +3490,6 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-            <div class="comparison-stats">
-                <div class="comparison-stat">
-                    <div class="comparison-stat-value">42%</div>
-                    <div class="comparison-stat-label">More Replies</div>
-                </div>
-                <div class="comparison-stat">
-                    <div class="comparison-stat-value">67%</div>
-                    <div class="comparison-stat-label">Higher Click Rate</div>
-                </div>
-                <div class="comparison-stat">
-                    <div class="comparison-stat-value">1min</div>
-                    <div class="comparison-stat-label">Setup</div>
                 </div>
             </div>
         </div>
@@ -2373,7 +3579,7 @@
                         </svg>
                     </div>
                     <h3 class="feature-title">Lightning Fast</h3>
-                    <p class="feature-description">Create your signature in under 60 seconds. Quick setup, instant
+                    <p class="feature-description">Create your signature in under 2 minutes. Quick setup, instant
                         deployment to all your email accounts.</p>
                 </div>
             </div>
@@ -2558,7 +3764,7 @@
                     </div>
                 </div> -->
                 <div class="guarantee-cta">
-                    <a href="https://app.signtry.com/signup" class="btn-primary">
+                    <a href="https://signtry.com/#pricing" class="btn-primary">
                         Get Started Risk-Free
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
@@ -2989,11 +4195,11 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Simple, transparent pricing</h2>
-                <p class="section-description">Choose the plan that's right for you. Cancel anytime</p>
+                <h2 class="section-title">Flexible Pricing, No Subscriptions Forced</h2>
+                <p class="section-description">Monthly Subscription, Yearly Plan or One-Time Purchase – You Decide!</p>
 
-                <!-- Billing Toggle -->
-                <div class="billing-toggle">
+                <!-- Billing Toggle (Only for Subscription Cards) -->
+                <div class="billing-toggle subscription-only">
                     <span class="billing-option active" data-billing="monthly">Monthly</span>
                     <div class="toggle-switch">
                         <input type="checkbox" id="billing-toggle" class="toggle-checkbox">
@@ -3006,13 +4212,18 @@
                 </div>
             </div>
 
-            <div class="pricing-grid">
+            <!-- All Plans in One Row -->
+            <div class="all-plans-grid">
                 <!-- Basic Plan -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3 class="pricing-name">Basic</h3>
                         <div class="pricing-price">
                             <div class="price-monthly">
+                                <div class="original-price">
+                                    <span class="strike-price">$10.35</span>
+                                    <span class="price-save">Save 15%</span>
+                                </div>
                                 <div class="price-row">
                                     <span class="price-currency">$</span>
                                     <span class="price-amount">9</span>
@@ -3020,17 +4231,22 @@
                                 </div>
                             </div>
                             <div class="price-yearly">
+                                <div class="original-price">
+                                    <span class="strike-price">$9</span>
+                                    <span class="price-save">Save 30%</span>
+                                </div>
                                 <div class="price-row">
                                     <span class="price-currency">$</span>
                                     <span class="price-amount">6.30</span>
                                     <span class="price-period">/month</span>
                                 </div>
-                                <div class="billing-note">billed annually</div>
+                                <div class="billing-note">billed annually ($75.60)</div>
                             </div>
                         </div>
                         <p class="pricing-description">Perfect for individuals / small teams</p>
                     </div>
                     <ul class="pricing-features">
+                        <li>Access to Dashboard</li>
                         <li>5 email signatures</li>
                         <li>Analytics Dashboard</li>
                         <li>Email Support</li>
@@ -3046,6 +4262,10 @@
                         <h3 class="pricing-name">Professional</h3>
                         <div class="pricing-price">
                             <div class="price-monthly">
+                                <div class="original-price">
+                                    <span class="strike-price">$33.35</span>
+                                    <span class="price-save">Save 15%</span>
+                                </div>
                                 <div class="price-row">
                                     <span class="price-currency">$</span>
                                     <span class="price-amount">29</span>
@@ -3053,74 +4273,123 @@
                                 </div>
                             </div>
                             <div class="price-yearly">
+                                <div class="original-price">
+                                    <span class="strike-price">$29</span>
+                                    <span class="price-save">Save 30%</span>
+                                </div>
                                 <div class="price-row">
                                     <span class="price-currency">$</span>
                                     <span class="price-amount">20.30</span>
                                     <span class="price-period">/month</span>
                                 </div>
-                                <div class="billing-note">billed annually</div>
+                                <div class="billing-note">billed annually ($243.60)</div>
                             </div>
                         </div>
                         <p class="pricing-description">For growing businesses</p>
                     </div>
                     <ul class="pricing-features">
                         <li>Everything in Basic</li>
+                        <li>Advanced Dashboard access</li>
                         <li>Up to 50 signatures</li>
                         <li>Advanced analytics</li>
                         <li>Priority support</li>
                     </ul>
                     <a href="https://app.signtry.com/signup" class="btn-primary btn-block">Get Started</a>
                 </div>
+
+                <!-- One-Time Purchase -->
+                <div class="pricing-card">
+                    <div class="single-purchase-badge">
+                        <span>One-Time</span>
+                    </div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Single Signature</h3>
+                        <div class="pricing-price">
+                            <div class="original-price">
+                                <span class="strike-price">$11.50</span>
+                                <span class="price-save">Save 15%</span>
+                            </div>
+                            <div class="price-row">
+                                <span class="price-currency">$</span>
+                                <span class="price-amount">10</span>
+                                <span class="price-period">one time</span>
+                            </div>
+                        </div>
+                        <p class="pricing-description">Perfect for trying out or getting just one professional signature
+                        </p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>1 professional email signature</li>
+                        <li>Custom design & branding</li>
+                        <li>Verified Badge included</li>
+                        <li>Social media links</li>
+                        <li>Contact information</li>
+                        <li>Lifetime usage</li>
+                        <li>No subscription required</li>
+                    </ul>
+                    <button class="btn-primary btn-block single-purchase-btn" id="singlePurchaseBtn">
+                        <span>Order Now</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <p class="single-purchase-note">You'll be asked to provide signature details in the email</p>
+                </div>
             </div>
         </div>
-    </section>
+        </div>
 
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Frequently asked questions</h2>
-                <p class="section-description">Everything you need to know about SignTry</p>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How does the tracking work?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Our advanced analytics track every click on your signature links, showing you which links
-                            perform best, when they're clicked, and helping you measure your email signature's
-                            effectiveness.</p>
-                    </div>
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently asked questions</h2>
+                    <p class="section-description">Everything you need to know about SignTry</p>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Can I use my own logo and branding?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolutely! You can upload your own logo, use your brand colors, and customize every aspect
-                            of your signature to match your professional identity.</p>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How does the tracking work?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our advanced analytics track every click on your signature links, showing you which links
+                                perform best, when they're clicked, and helping you measure your email signature's
+                                effectiveness.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Which email clients are supported?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>SignTry works with all major email clients including Gmail, Outlook, Apple Mail, Yahoo,
-                            and more. We provide step-by-step installation guides for each platform.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I use my own logo and branding?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutely! You can upload your own logo, use your brand colors, and customize every
+                                aspect
+                                of your signature to match your professional identity.</p>
+                        </div>
                     </div>
-                </div>
-                <!-- <div class="faq-item">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Which email clients are supported?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>SignTry works with all major email clients including Gmail, Outlook, Apple Mail, Yahoo,
+                                and more. We provide step-by-step installation guides for each platform.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="faq-item">
                     <button class="faq-question">
                         <span>Is there a free trial?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -3132,91 +4401,93 @@
                             required to start.</p>
                     </div>
                 </div> -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How do verified badges work?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Verified badges add a professional checkmark next to your name, similar to social media
-                            verification. This builds trust and shows recipients that your email is authentic.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How do verified badges work?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Verified badges add a professional checkmark next to your name, similar to social media
+                                verification. This builds trust and shows recipients that your email is authentic.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Can I cancel anytime?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes, you can cancel your subscription at any time. No questions asked, no hidden fees. You'll
-                            retain access until the end of your billing period.</p>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I cancel anytime?</span>
+                            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, you can cancel your subscription at any time. No questions asked, no hidden fees.
+                                You'll
+                                retain access until the end of your billing period.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <img src="./images/icons/mail.gif" width="150px" alt="coin">
-                <h2 class="cta-title">Ready to transform your <i>email presence?</i></h2>
-                <p class="cta-description">Join 100+ professionals using SignTry to make every email count</p>
-                <div class="cta-buttons">
-                    <!-- <button class="btn-primary btn-large">
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <img src="./images/icons/mail.gif" width="150px" alt="coin">
+                    <h2 class="cta-title">Ready to transform your email presence?</h2>
+                    <p class="cta-description">Join 100+ professionals using SignTry to make every email count</p>
+                    <div class="cta-buttons">
+                        <!-- <button class="btn-primary btn-large">
                         Start Your Free Trial
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button> -->
-                    <a href="https://app.signtry.com/signup" class="btn-primary btn-large">Get Started</a>
-                </div>
-                <p class="cta-note">Cancel anytime</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="index.html#features">Features</a>
-                        <a href="index.html#pricing">Pricing</a>
-                        <a href="index.html#screenshots">Screenshots</a>
+                        <a href="https://signtry.com/#pricing" class="btn-primary btn-large">Get Started</a>
                     </div>
-                    <!-- <div class="footer-column">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Product</h4>
+                            <a href="index.html#features">Features</a>
+                            <a href="index.html#pricing">Pricing</a>
+                            <a href="index.html#screenshots">Screenshots</a>
+                        </div>
+                        <!-- <div class="footer-column">
                         <h4>Company</h4>
                         <a href="#">About</a>
                         <a href="#">Blog</a>
                         <a href="#">Careers</a>
                         <a href="#">Contact</a>
                     </div> -->
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="index.html">FAQ</a>
-                        <a href="mailto:support@signtry.com">Contact Support</a>
-                        <a href="/blog.html">Blog</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <a href="./privacy.html">Privacy</a>
-                        <a href="./terms.html">Terms</a>
-                        <a href="./gdpr.html">GDPR</a>
+                        <div class="footer-column">
+                            <h4>Resources</h4>
+                            <a href="index.html">FAQ</a>
+                            <a href="mailto:support@signtry.com">Contact Support</a>
+                            <a href="/blog.html">Blog</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Legal</h4>
+                            <a href="./privacy.html">Privacy</a>
+                            <a href="./terms.html">Terms</a>
+                            <a href="./gdpr.html">GDPR</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 SignTry.com | All rights reserved.</p>
-                <!-- <div class="footer-socials">
+                <div class="footer-bottom">
+                    <p>&copy; 2025 SignTry.com | All rights reserved.</p>
+                    <!-- <div class="footer-socials">
                     <a href="#" aria-label="Twitter">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                             <path
@@ -3236,29 +4507,31 @@
                         </svg>
                     </a>
                 </div> -->
+                </div>
             </div>
+        </footer>
+
+        <script src="script.js"></script>
+
+        <!-- SEO контент -->
+        <div style="display: none;" aria-hidden="true">
+            <h2>Email Signature Generator & Builder</h2>
+            <p>SignTry is the best free email signature generator and email signature builder. Create professional email
+                signatures instantly with our email signature maker. Our email signature creator works with Outlook,
+                Gmail,
+                and all major email clients. Design custom email signature templates with our easy-to-use signature
+                maker
+                tool.</p>
+
+            <h3>Email Signature Creator Features</h3>
+            <ul>
+                <li>Email signature generator with no coding required</li>
+                <li>Email signature builder for Outlook and Gmail</li>
+                <li>Professional email signature maker with templates</li>
+                <li>Email signature creator with tracking and analytics</li>
+                <li>Create signature for all email platforms</li>
+            </ul>
         </div>
-    </footer>
-
-    <script src="script.js"></script>
-
-    <!-- SEO контент -->
-    <div style="display: none;" aria-hidden="true">
-        <h2>Email Signature Generator & Builder</h2>
-        <p>SignTry is the best free email signature generator and email signature builder. Create professional email
-            signatures instantly with our email signature maker. Our email signature creator works with Outlook, Gmail,
-            and all major email clients. Design custom email signature templates with our easy-to-use signature maker
-            tool.</p>
-
-        <h3>Email Signature Creator Features</h3>
-        <ul>
-            <li>Email signature generator with no coding required</li>
-            <li>Email signature builder for Outlook and Gmail</li>
-            <li>Professional email signature maker with templates</li>
-            <li>Email signature creator with tracking and analytics</li>
-            <li>Create signature for all email platforms</li>
-        </ul>
-    </div>
 </body>
 
 </html>
