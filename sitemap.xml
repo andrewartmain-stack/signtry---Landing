@@ -1,52 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://signtry.com/</loc>
-  <lastmod>2025-12-07T14:26:15+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://signtry.com/blog.html</loc>
-  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://signtry.com/index.html</loc>
-  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://signtry.com/privacy.html</loc>
-  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://signtry.com/terms.html</loc>
-  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://signtry.com/gdpr.html</loc>
-  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://signtry.com/posts/how-to-create-a-signature-in-gmail.html</loc>
-  <lastmod>2025-12-07T14:26:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://signtry.com/posts/how-to-create-an-email-signature-in-gmail.html</loc>
-  <lastmod>2025-12-07T14:26:17+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://signtry.com/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/pricing.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/free-email-signature-generator.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/blog.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/privacy.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/terms.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/gdpr.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/features/email-signature-analytics.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/features/email-signature-generator.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/features/email-signature-management.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/features/email-signature-templates.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/features/html-email-signature.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides/email-signature-fonts.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides/email-signature-size.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides/funny-email-sign-offs.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides/how-to-change-email-signature-on-iphone.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides/how-to-change-signature-in-yahoo-mail.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides/how-to-create-an-email-signature-in-outlook.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/guides/social-media-icons-for-email-signature.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/examples/college-student-email-signature.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/examples/email-signature-examples.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/examples/funny-email-signatures.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/examples/holiday-email-signature.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/examples/real-estate-email-signature.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/examples/teacher-email-signature.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/posts/how-to-create-a-signature-in-gmail.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://signtry.com/posts/how-to-create-an-email-signature-in-gmail.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>

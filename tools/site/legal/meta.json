@@ -1,0 +1,23 @@
+{
+  "privacy": {
+    "title": "Privacy Policy - SignTry",
+    "desc": "SignTry Privacy Policy - Learn how we protect and handle your data.",
+    "h1": "Privacy Policy",
+    "lead": "Your privacy is important to us. Learn how we protect and handle your data.",
+    "updated": "Last Updated: November 5, 2025"
+  },
+  "terms": {
+    "title": "Terms of Service - SignTry",
+    "desc": "SignTry Terms of Service - Understand our terms and conditions for using our services.",
+    "h1": "Terms of Service",
+    "lead": "Please read these terms carefully before using our services.",
+    "updated": "Last Updated: November 5, 2025"
+  },
+  "gdpr": {
+    "title": "GDPR Compliance - SignTry",
+    "desc": "SignTry GDPR Compliance - Learn how we comply with the General Data Protection Regulation.",
+    "h1": "GDPR Compliance",
+    "lead": "Our commitment to data protection and privacy under the General Data Protection Regulation",
+    "updated": "Last Updated: November 5, 2025"
+  }
+}

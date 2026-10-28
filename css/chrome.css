@@ -1,0 +1,386 @@
+/* Shared navbar + footer for standalone pages that don't load site.css
+   (e.g. free-email-signature-generator.html). Scoped to .site-nav / .site-footer
+   so it can't clash with a page's own styles. Keep in sync with site.css. */
+
+.site-nav,
+.site-footer {
+    --ink: #061b31;
+    --bg: #f7f5ef;
+    --muted: #4a5d72;
+    --line: rgba(6, 27, 49, .12);
+    --lime: #dbee9f;
+    font-family: 'Geist', system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased
+}
+
+.site-nav *,
+.site-footer * {
+    box-sizing: border-box
+}
+
+.site-nav a,
+.site-footer a {
+    color: inherit;
+    text-decoration: none
+}
+
+.site-nav .wrap,
+.site-footer .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px
+}
+
+/* Navbar */
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    color: var(--ink)
+}
+
+.site-nav .wrap {
+    max-width: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 80px;
+    padding: 0 32px
+}
+
+.site-nav .logo {
+    display: flex;
+    align-items: center;
+    flex: none
+}
+
+.site-nav .logo img {
+    height: 42px;
+    width: auto;
+    display: block
+}
+
+.site-nav .links {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 500
+}
+
+.site-nav .links>a,
+.site-nav .dd>button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: none;
+    border: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer
+}
+
+.site-nav .links>a:hover,
+.site-nav .dd>button:hover,
+.site-nav .dd.open>button {
+    background: var(--bg)
+}
+
+.site-nav svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex: none
+}
+
+.site-nav .dd>button svg {
+    width: 16px;
+    height: 16px;
+    transition: transform .2s
+}
+
+.site-nav .dd.open>button svg {
+    transform: rotate(180deg)
+}
+
+.site-nav .links a.gen em {
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 99px;
+    background: var(--lime);
+    color: var(--ink)
+}
+
+.site-nav .dd {
+    position: relative
+}
+
+.site-nav .menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 320px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(6, 27, 49, .16);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: .18s
+}
+
+.site-nav .menu.wide {
+    width: 360px
+}
+
+.site-nav .dd.open .menu {
+    opacity: 1;
+    visibility: visible;
+    transform: none
+}
+
+@media(hover:hover) {
+    .site-nav .dd:hover .menu {
+        opacity: 1;
+        visibility: visible;
+        transform: none
+    }
+
+    .site-nav .dd:hover>button svg {
+        transform: rotate(180deg)
+    }
+}
+
+.site-nav .menu a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px;
+    border-radius: 12px
+}
+
+.site-nav .menu a:hover {
+    background: var(--bg)
+}
+
+.site-nav .menu .ic {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    flex: none
+}
+
+.site-nav .menu .ic svg {
+    width: 20px;
+    height: 20px
+}
+
+.site-nav .menu b {
+    display: block;
+    font-weight: 500;
+    font-size: 15px
+}
+
+.site-nav .menu small {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.35
+}
+
+.site-nav .nr {
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+.site-nav .nr .btn {
+    display: inline-flex;
+    align-items: center;
+    height: auto;
+    padding: 12px 22px;
+    font: 500 15px/1.2 'Geist', system-ui, sans-serif;
+    border-radius: 10px;
+    border: 1px solid var(--ink);
+    background: #fff;
+    color: var(--ink);
+    box-shadow: none;
+    white-space: nowrap
+}
+
+.site-nav .nr .btn.dark {
+    background: var(--ink);
+    color: #fff
+}
+
+.site-nav .burger {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    cursor: pointer;
+    color: var(--ink)
+}
+
+.site-nav .burger svg {
+    width: 22px;
+    height: 22px
+}
+
+@media(max-width:1180px) {
+    .site-nav .links a.gen {
+        display: none
+    }
+}
+
+@media(max-width:900px) {
+    .site-nav .wrap {
+        padding: 0 16px;
+        height: 68px
+    }
+
+    .site-nav .logo img {
+        height: 34px
+    }
+
+    .site-nav .links {
+        display: none
+    }
+
+    .site-nav .nr {
+        margin-left: auto
+    }
+
+    .site-nav .burger {
+        display: grid
+    }
+
+    .site-nav.open .links {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 8px 16px 20px;
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 20px 40px rgba(6, 27, 49, .1)
+    }
+
+    .site-nav .menu {
+        position: static;
+        width: auto;
+        box-shadow: none;
+        border: 0;
+        display: none
+    }
+
+    .site-nav .dd.open .menu {
+        display: block
+    }
+}
+
+@media(max-width:560px) {
+    .site-nav .nr .btn:first-child {
+        display: none
+    }
+}
+
+/* Footer */
+.site-footer {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 32px;
+    margin: 0 18px 18px;
+    padding: 72px 0 28px
+}
+
+.site-footer .top {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(4, 1fr);
+    gap: 32px
+}
+
+.site-footer h3 {
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: -.03em;
+    line-height: 1.08;
+    max-width: 260px;
+    margin: 0;
+    color: #fff
+}
+
+.site-footer h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #9db3c9;
+    margin: 0 0 10px
+}
+
+.site-footer ul {
+    padding: 0;
+    margin: 0
+}
+
+.site-footer li {
+    list-style: none;
+    font-size: 14px;
+    margin-bottom: 6px
+}
+
+.site-footer li a:hover {
+    text-decoration: underline
+}
+
+.site-footer .logo img {
+    height: 44px;
+    width: auto;
+    display: block
+}
+
+.site-footer .bot {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, .15);
+    font-size: 12px;
+    color: #9db3c9
+}
+
+@media(max-width:900px) {
+    .site-footer .top {
+        grid-template-columns: 1fr 1fr
+    }
+}
+
+@media(max-width:560px) {
+    .site-footer {
+        margin: 0 8px 8px;
+        border-radius: 24px
+    }
+}
