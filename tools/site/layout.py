@@ -173,6 +173,7 @@ def head(p, path, title, desc, schema, og_image='media/demo.jpg'):
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{title}</title>
     <meta name="description" content="{desc}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#061b31">
     <link rel="canonical" href="{url}">
     <meta property="og:type" content="website">
