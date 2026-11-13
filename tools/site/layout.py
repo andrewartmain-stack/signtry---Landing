@@ -53,16 +53,16 @@ MAIL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="#0b5cff" stroke-width=
 GEN_ICON = '''<svg viewBox="0 0 24 24" fill="none" stroke="url(#gen-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gen-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b5cff"/><stop offset="1" stop-color="#b14bf4"/></linearGradient></defs><path d="M12 20h9"/><path d="M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.86z"/><path d="M5 3v4M3 5h4"/></svg>'''
 
 FEATURES = [
-    ('features/email-signature-templates.html', 'layout', '#e6efff', '#0b5cff', 'Email signature templates', 'Professional layouts for every industry'),
-    ('features/email-signature-generator.html', 'pen', '#efe9ff', '#7b5cf0', 'Email signature generator', 'Add your photo, logo, links and colors'),
-    ('features/email-signature-management.html', 'users', '#ddf7f5', '#1aa89f', 'Team signatures from a CSV', 'One brand across every inbox'),
-    ('features/email-signature-analytics.html', 'chart', '#fff1e3', '#d9730d', 'Signature analytics', 'See which links get clicked'),
-    ('features/html-email-signature.html', 'mailcheck', '#f2f8dc', '#5d7a0a', 'Works in every inbox', 'HTML signatures for Gmail, Outlook and more'),
+    ('features/email-signature-templates', 'layout', '#e6efff', '#0b5cff', 'Email signature templates', 'Professional layouts for every industry'),
+    ('features/email-signature-generator', 'pen', '#efe9ff', '#7b5cf0', 'Email signature generator', 'Add your photo, logo, links and colors'),
+    ('features/email-signature-management', 'users', '#ddf7f5', '#1aa89f', 'Team signatures from a CSV', 'One brand across every inbox'),
+    ('features/email-signature-analytics', 'chart', '#fff1e3', '#d9730d', 'Signature analytics', 'See which links get clicked'),
+    ('features/html-email-signature', 'mailcheck', '#f2f8dc', '#5d7a0a', 'Works in every inbox', 'HTML signatures for Gmail, Outlook and more'),
 ]
 
 RESOURCES = [
-    ('blog.html', 'book', '#e6efff', '#0b5cff', 'Blog', 'Tips for better email and personal branding'),
-    ('guides.html', 'buoy', '#f2f8dc', '#5d7a0a', 'Guides &amp; examples', 'Install guides and signature examples'),
+    ('blog', 'book', '#e6efff', '#0b5cff', 'Blog', 'Tips for better email and personal branding'),
+    ('guides', 'buoy', '#f2f8dc', '#5d7a0a', 'Guides &amp; examples', 'Install guides and signature examples'),
     ('index.html#individuals', 'users', '#efe9ff', '#7b5cf0', 'About Us', 'Who we are and why we built SignTry'),
     ('mailto:support@signtry.com', 'mail', '#ddf7f5', '#1aa89f', 'Contact Us', 'Talk to a real person on our team'),
 ]
@@ -91,14 +91,14 @@ def nav(p):
                         {menu_items(p, FEATURES)}
                     </div>
                 </div>
-                <a href="{p}pricing.html">Pricing</a>
+                <a href="{p}pricing">Pricing</a>
                 <div class="dd">
                     <button type="button" aria-expanded="false" aria-haspopup="true">Resources {ic('chev')}</button>
                     <div class="menu">
                         {menu_items(p, RESOURCES)}
                     </div>
                 </div>
-                <a class="gen" href="{p}free-email-signature-generator.html">{ic('spark')}Generate your free email signature <em>Free</em></a>
+                <a class="gen" href="{p}free-email-signature-generator">{ic('spark')}Generate your free email signature <em>Free</em></a>
             </div>
             <div class="nr"><a class="btn" href="{LOGIN}">Log in</a><a class="btn dark" href="{SIGNUP}">Sign up</a></div>
             <button class="burger" id="burger" type="button" aria-label="Open menu" aria-controls="links" aria-expanded="false">{ic('menu')}</button>
@@ -107,28 +107,28 @@ def nav(p):
 
 
 FOOTER_COLS = [
-    ('Product', [('Free email signature generator', 'free-email-signature-generator.html'), ('Pricing', 'pricing.html'), ('Email signature templates', 'features/email-signature-templates.html'),
-                 ('Email signature generator', 'features/email-signature-generator.html'),
-                 ('Team signatures', 'features/email-signature-management.html'),
-                 ('Signature analytics', 'features/email-signature-analytics.html'),
-                 ('HTML email signatures', 'features/html-email-signature.html')]),
-    ('Guides', [('Outlook email signature', 'guides/how-to-create-an-email-signature-in-outlook.html'),
-                ('iPhone email signature', 'guides/how-to-change-email-signature-on-iphone.html'),
-                ('Yahoo Mail signature', 'guides/how-to-change-signature-in-yahoo-mail.html'),
-                ('Gmail signature', 'posts/how-to-create-an-email-signature-in-gmail.html'),
-                ('Email signature size', 'guides/email-signature-size.html'),
-                ('Social media icons', 'guides/social-media-icons-for-email-signature.html'),
-                ('Email signature fonts', 'guides/email-signature-fonts.html'),
-                ('Funny email sign-offs', 'guides/funny-email-sign-offs.html')]),
-    ('Examples', [('Email signature examples', 'examples/email-signature-examples.html'),
-                  ('Student email signature', 'examples/college-student-email-signature.html'),
-                  ('Teacher email signature', 'examples/teacher-email-signature.html'),
-                  ('Real estate email signature', 'examples/real-estate-email-signature.html'),
-                  ('Funny email signatures', 'examples/funny-email-signatures.html'),
-                  ('Holiday email signatures', 'examples/holiday-email-signature.html'),
-                  ('All guides &amp; examples', 'guides.html')]),
-    ('Company', [('Blog', 'blog.html'), ('Contact support', 'mailto:support@signtry.com'), ('Log in', LOGIN),
-                 ('Privacy', 'privacy.html'), ('Terms', 'terms.html'), ('GDPR', 'gdpr.html')]),
+    ('Product', [('Free email signature generator', 'free-email-signature-generator'), ('Pricing', 'pricing'), ('Email signature templates', 'features/email-signature-templates'),
+                 ('Email signature generator', 'features/email-signature-generator'),
+                 ('Team signatures', 'features/email-signature-management'),
+                 ('Signature analytics', 'features/email-signature-analytics'),
+                 ('HTML email signatures', 'features/html-email-signature')]),
+    ('Guides', [('Outlook email signature', 'guides/how-to-create-an-email-signature-in-outlook'),
+                ('iPhone email signature', 'guides/how-to-change-email-signature-on-iphone'),
+                ('Yahoo Mail signature', 'guides/how-to-change-signature-in-yahoo-mail'),
+                ('Gmail signature', 'posts/how-to-create-an-email-signature-in-gmail'),
+                ('Email signature size', 'guides/email-signature-size'),
+                ('Social media icons', 'guides/social-media-icons-for-email-signature'),
+                ('Email signature fonts', 'guides/email-signature-fonts'),
+                ('Funny email sign-offs', 'guides/funny-email-sign-offs')]),
+    ('Examples', [('Email signature examples', 'examples/email-signature-examples'),
+                  ('Student email signature', 'examples/college-student-email-signature'),
+                  ('Teacher email signature', 'examples/teacher-email-signature'),
+                  ('Real estate email signature', 'examples/real-estate-email-signature'),
+                  ('Funny email signatures', 'examples/funny-email-signatures'),
+                  ('Holiday email signatures', 'examples/holiday-email-signature'),
+                  ('All guides &amp; examples', 'guides')]),
+    ('Company', [('Blog', 'blog'), ('Contact support', 'mailto:support@signtry.com'), ('Log in', LOGIN),
+                 ('Privacy', 'privacy'), ('Terms', 'terms'), ('GDPR', 'gdpr')]),
 ]
 
 
@@ -221,7 +221,7 @@ def crumbs_html(p, trail):
     return '<div class="crumbs">' + ' / '.join(parts) + '</div>'
 
 
-def cta_buttons(p, second=('Generate your first email signature free', 'free-email-signature-generator.html')):
+def cta_buttons(p, second=('Generate your first email signature free', 'free-email-signature-generator')):
     return f'''<div class="cta">
                 <a class="btn sso" href="{SIGNUP}"><span class="ic">{MAIL_ICON}</span>Sign up with email</a>
                 <a class="btn sso" href="{href(p, second[1])}"><span class="ic">{GEN_ICON}</span>{second[0]}</a>
