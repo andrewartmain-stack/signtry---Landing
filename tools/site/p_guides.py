@@ -1,4 +1,5 @@
 from layout import *
+from links import related
 
 
 def article_page(a, kind='Guide', hub=('Guides &amp; examples', 'guides.html')):
@@ -34,7 +35,7 @@ def article_page(a, kind='Guide', hub=('Guides &amp; examples', 'guides.html')):
     <section class="plain">
         <div class="wrap">
             <div class="sec-head"><h2>Related guides</h2></div>
-            {related_html(p, a['related'])}
+            {related_html(p, related(path, a['related']))}
         </div>
     </section>
 
@@ -87,6 +88,7 @@ OUTLOOK['article'] = f'''                {answer('<strong>Quick answer:</strong>
                 <p>The mobile app keeps signatures simple. Text and links work well; logos and complex layouts are best set up on desktop or web. Mobile and desktop signatures are separate, so set up both.</p>
                 {h2('change', 'How to change or edit your email signature in Outlook')}
                 <p>To change your email signature in Outlook, go back to the same place you created it: <strong>Settings → Account → Signatures</strong> in new Outlook and on the web, or <strong>File → Options → Mail → Signatures</strong> in classic Outlook. Select the signature from the list, edit it, and save. To update a new job title or phone number, edit the existing signature rather than creating a new one, so your default settings stay the same.</p>
+                <p>Sending the same email again and again? Save it once and reuse it: here is <a href="how-to-create-an-email-template-in-outlook.html">how to create an email template in Outlook</a>. Keep your signature out of the template, and Outlook adds the current one every time.</p>
                 {h2('image', 'How to add a logo or image to your Outlook signature')}
                 <p>In the signature editor, place your cursor where the image should go and use the <strong>image</strong> button in the toolbar (classic Outlook has an <strong>Insert Picture</strong> icon). Keep images small: a logo around 150–200 pixels wide and a headshot around 100 pixels square look sharp without making emails heavy. Our <a href="email-signature-size.html">email signature size guide</a> has exact dimensions.</p>
                 <p>Images inserted from your computer are embedded in every email, and some recipients see them as attachments. Signatures made in SignTry use hosted images instead, which display more reliably.</p>
@@ -225,7 +227,7 @@ SIZE['article'] = f'''                {answer('<strong>Quick answer:</strong> Ke
                     <li><strong>Host your images.</strong> Images embedded in the email often show up as attachments. SignTry hosts them for you.</li>
                 </ul>
                 {h2('text', 'Font size and signature length')}
-                <p>Use <strong>14–16px</strong> for your name and <strong>12–14px</strong> for everything else, in a web-safe font like Arial, Helvetica, Verdana or Georgia. Keep the text to four or five lines. Gmail also limits signatures to <strong>10,000 characters</strong>, which a signature with lots of formatting can hit; if Gmail says your signature is too long, simplify it or use hosted images.</p>
+                <p>Use <strong>14–16px</strong> for your name and <strong>12–14px</strong> for everything else, in a web-safe font like Arial, Helvetica, Verdana or Georgia. Our list of the <a href="email-signature-fonts.html">best fonts for email signatures</a> shows 12 safe picks. Keep the text to four or five lines. Gmail also limits signatures to <strong>10,000 characters</strong>, which a signature with lots of formatting can hit; if Gmail says your signature is too long, simplify it or use hosted images.</p>
                 {fig('../', 'media/stills/personalize-70.jpg', 'Email signature preview with a correctly sized photo, name and handwritten signature', 'A well-proportioned signature: square photo, short text, one accent color.')}
                 <h2>Get the sizes right automatically</h2>
                 <p>SignTry resizes, crops and hosts every image for you, so your signature is the right size in every inbox without you opening an image editor. <a href="../features/email-signature-generator.html">Try the free email signature generator</a>.</p>'''
@@ -276,6 +278,7 @@ SOCIAL['article'] = f'''                {answer('<strong>Quick answer:</strong> 
                     <li><strong>Alt text:</strong> add “LinkedIn”, “Instagram” and so on, so people with images turned off still know where the link goes.</li>
                 </ul>
                 <p>More sizing tips are in our <a href="email-signature-size.html">email signature size guide</a>.</p>
+                <p>Not sure which icons earn their place? With <a href="../features/email-signature-analytics.html">signature analytics</a> you can see which links in your signature people actually click, then drop the ones nobody uses.</p>
                 {h2('signtry', 'How to add social media icons in SignTry')}
                 {steps(['Open the <a href="../features/email-signature-generator.html">email signature generator</a> and pick a template.', 'In the <strong>Links</strong> step, paste the URL of each profile you want to show.', 'Fine-tune colors and sizes in the <strong>Style</strong> step.', 'Save and click <strong>Copy</strong>. The icons are hosted and linked for you, and clicks show up in your <a href="../features/email-signature-analytics.html">signature analytics</a>.'])}
                 {h2('manual', 'How to add social icons manually in Gmail or Outlook')}
@@ -297,5 +300,94 @@ SOCIAL['related'] = [('Guide', 'Email signature size and dimensions', 'guides/em
                      ('Examples', 'Professional email signature examples', 'examples/email-signature-examples.html')]
 
 
+# ---------------------------------------------------------------- Outlook email templates
+TEMPLATE = dict(
+    path='guides/how-to-create-an-email-template-in-outlook.html', crumb='Outlook email template', mins=8,
+    title='How to Create an Email Template in Outlook (2026 Guide)',
+    desc='How to create an email template in Outlook: new and classic Outlook, Outlook on the web and Mac. Save, use, edit and share templates step by step.',
+    h1='How to create an email template in Outlook',
+    lead='Here is how to create an email template in Outlook so you write an email once and reuse it forever, whichever version you use: new Outlook for Windows, classic Outlook, Outlook on the web or Outlook for Mac. You will also learn how to edit, move and share your templates.',
+)
+_MS = 'https://support.microsoft.com/en-us/outlook/create-email-templates-in-outlook'
+_TPL_DIR = r'C:\<wbr>Users\<wbr>&lt;your username&gt;\<wbr>AppData\<wbr>Roaming\<wbr>Microsoft\<wbr>Templates'  # <wbr> lets it wrap on phones
+TEMPLATE['article'] = f'''                {answer('<strong>Quick answer:</strong> In new Outlook and Outlook on the web, open a new message, then select <strong>Mail template → Save email as template</strong> on the Message ribbon. In classic Outlook for Windows, select <strong>File → Save As</strong> and choose <strong>Outlook Template (*.oft)</strong>. On a Mac, use <strong>File → Save As Template</strong>.')}
+                {toc([('which', 'Which Outlook do you have?'), ('types', 'Mail templates vs My Templates'), ('new', 'New Outlook and Outlook on the web'), ('classic', 'Classic Outlook for Windows'), ('mac', 'Outlook for Mac'), ('edit', 'How to edit a template'), ('move', 'Move templates to new Outlook'), ('share', 'Share templates with your team'), ('signature', 'Keep your signature out of the template'), ('mistakes', 'Common mistakes')])}
+                <p>Outlook now has two different template features, four versions of the app, and menus that moved in the last year. Plenty of guides still describe buttons that no longer exist, so start by checking which Outlook is in front of you.</p>
+                {h2('which', 'Which Outlook do you have?')}
+                {table(['If you see…', 'You are using', 'Jump to'], [
+    ['No <strong>File</strong> tab, and a ribbon that looks like the web version', 'New Outlook for Windows', '<a href="#new">Steps</a>'],
+    ['Outlook in a browser at outlook.office.com or outlook.live.com', 'Outlook on the web', '<a href="#new">Steps</a>'],
+    ['A <strong>File</strong> tab at the far left of the ribbon', 'Classic Outlook for Windows', '<a href="#classic">Steps</a>'],
+    ['An <strong>Outlook</strong> menu in the Mac menu bar', 'Outlook for Mac', '<a href="#mac">Steps</a>']])}
+                {h2('types', 'Mail templates vs My Templates: pick the right one')}
+                <p>New Outlook and Outlook on the web give you two options. <a href="{_MS}" rel="noopener">Microsoft separates them clearly</a>; most guides don't.</p>
+                {table(['', 'Mail templates', 'My Templates add-in'], [
+    ['What it saves', 'The whole email: recipients, subject, body and attachments', 'Short text snippets only'],
+    ['Formatting', 'Rich formatting, images and tables', 'Plain text with basic styling'],
+    ['Best for', 'Complete emails you send the same way every time', 'Reusable phrases you drop into replies']])}
+                <p>The rule of thumb: if you normally copy an old email and change two words, you want a <strong>Mail template</strong>. If you keep typing the same paragraph about your refund policy, you want <strong>My Templates</strong>. Both need a qualifying Microsoft 365 subscription, so on a free Outlook.com account some of these options may not appear.</p>
+                {h2('new', 'How to create an email template in new Outlook and Outlook on the web')}
+                <h3>Save a full email as a Mail template</h3>
+                {steps(['On the <strong>Home</strong> ribbon, select <strong>New → Mail</strong>.', 'Write the email exactly as you want to reuse it. Add the subject, any attachments, and recipients only if they never change.', 'On the <strong>Message</strong> ribbon, select <strong>Mail template → Save email as template</strong>.', 'Type a name for the template and select <strong>Save</strong>.'])}
+                {fig('../', 'images/guides/outlook-save-email-as-template.svg', 'Illustration of saving an email as a template in new Outlook: Message tab, Mail template, Save email as template, then name and save', 'Illustration of the menu path in new Outlook and Outlook on the web.')}
+                <p>To see everything you have saved, open <strong>Settings → Mail → Templates</strong>. Templates are listed by account, and a template you save in new Outlook also shows up in Outlook on the web for the same mailbox.</p>
+                {callout('Watch the recipients. Mail templates save whatever is in To, Cc and Bcc. Save a template while a colleague is still in Cc and every email you send from it copies them too. Clear the recipient fields before saving unless they truly never change.')}
+                <h3>Save a text snippet with My Templates</h3>
+                {steps(['Select <strong>New → Mail</strong>.', 'On the <strong>Message</strong> tab, select <strong>My Templates</strong>. A side panel opens.', 'Select <strong>+Template</strong>.', 'Enter a title, then type the snippet text in the field below it.', 'Select <strong>Save</strong>. To insert it later, open the same panel while writing and click the snippet.'])}
+                <p>Don't see <strong>My Templates</strong> at all? Your organization has probably switched add-ins off. That is an admin setting, so ask IT. Mail templates still work without it.</p>
+                <h3>Use a template you have saved</h3>
+                {steps(['On the <strong>Home</strong> ribbon, select <strong>New → Mail from template</strong>.', 'Pick the template from the list. It opens as a normal draft.', 'Change the recipients, subject or body as needed, then select <strong>Send</strong>.'])}
+                {h2('classic', 'How to create an email template in classic Outlook for Windows')}
+                <p>Classic Outlook saves templates as <code>.oft</code> files on your computer rather than in your mailbox.</p>
+                {steps(['On the <strong>Home</strong> tab, select <strong>New Email</strong> (shortcut: <strong>Ctrl + Shift + M</strong>).', 'Write the message you want to reuse.', 'In the message window, select <strong>File → Save As</strong>.', 'In the <strong>Save as type</strong> list, choose <strong>Outlook Template (*.oft)</strong>.', 'Name the file and select <strong>Save</strong>.'])}
+                {fig('../', 'images/guides/outlook-classic-save-as-oft.svg', 'Illustration of the classic Outlook Save As dialog with Outlook Template (*.oft) selected as the file type', 'Illustration of the Save As dialog in classic Outlook.')}
+                <p>Outlook saves it to <code>{_TPL_DIR}</code> by default. Remember that path: you will need it if you move to new Outlook or a new computer.</p>
+                <h3>Open a template in classic Outlook</h3>
+                {steps(['Select <strong>New Items → More Items → Choose Form</strong>.', 'In the <strong>Look In</strong> list, select <strong>User Templates in File System</strong>.', 'Pick your template and select <strong>Open</strong>.'])}
+                <p>Four clicks deep, every single time. If you send the same email several times a day, pin the Templates folder in File Explorer and double-click the <code>.oft</code> file instead. It opens the same draft.</p>
+                {h2('mac', 'How to create an email template in Outlook for Mac')}
+                {steps(['Open the email you want to reuse, or write a new one.', 'Select <strong>File → Save As Template</strong>.', 'Give it a name, such as “Monthly status update”, and add a tag if you like.', 'Choose where to save it and select <strong>Save</strong>.'])}
+                <p>To use it, select <strong>File → New → Mail From Template</strong> and pick the file. Mac templates end in <code>.emltpl</code>, not <code>.oft</code>, so the two are not interchangeable. Microsoft says the built-in Mac controls need a Microsoft 365 subscription and Outlook for Mac 15.35 or later, and the My Templates add-in on Mac only works with Exchange accounts.</p>
+                {h2('edit', 'How to edit an Outlook email template')}
+                <p>This trips up nearly everyone: <strong>changing a draft you opened from a template does not change the template.</strong> If you select Save, Outlook creates a draft of that message and leaves the template untouched.</p>
+                <ul>
+                    <li><strong>New Outlook and the web:</strong> open the template, make your changes, and save it again with <strong>Mail template → Save email as template</strong> under the same name. Then delete the old version in <strong>Settings → Mail → Templates</strong>.</li>
+                    <li><strong>Classic Outlook:</strong> open the <code>.oft</code>, edit it, then <strong>File → Save As → Outlook Template</strong> with the same file name to overwrite it.</li>
+                    <li><strong>My Templates:</strong> open the panel and select <strong>Edit</strong> on the snippet.</li>
+                </ul>
+                {h2('move', 'How to move classic templates to new Outlook')}
+                <p>Switching from classic to new Outlook does not bring your <code>.oft</code> files along. Import them yourself:</p>
+                {steps(['In new Outlook, open <strong>Settings → Mail → Templates</strong>.', 'Select <strong>Add → Add OFT</strong>.', f'Select <strong>Choose</strong> and browse to <code>{_TPL_DIR}</code>.', 'Select the files (you can pick several at once) and select <strong>Add</strong>.'])}
+                {fig('../', 'images/guides/outlook-settings-templates.svg', 'Illustration of new Outlook settings: Mail, Templates, the Add OFT option and a Save as OFT button next to each template', 'Illustration of Settings → Mail → Templates in new Outlook.')}
+                <p>It works in reverse too: <strong>Save as OFT</strong> next to any saved template downloads a copy to your computer.</p>
+                {h2('share', 'How to share Outlook email templates with your team')}
+                <p>Outlook has no shared template library for regular mailboxes. You have two practical options:</p>
+                <ul>
+                    <li><strong>Forward as OFT.</strong> In new Outlook, open the draft and select <strong>Forward as OFT</strong> on the Message tab. Outlook attaches the template to a new email, and your colleague imports it with <strong>Add → Add OFT</strong>.</li>
+                    <li><strong>Use a shared mailbox.</strong> My Templates snippets created in a shared mailbox can be visible to everyone with access, but only if the mailbox is added as a full account in new Outlook, or opened in a separate tab with <strong>Open another mailbox</strong> in Outlook on the web. Open it any other way and the templates stay private to you.</li>
+                </ul>
+                <p>Either way, shared files drift: six people, six slightly different versions of the “pricing follow-up” within a month. If the wording matters, keep one master copy and re-share it whenever it changes. The same goes for signatures, which is why teams use <a href="../features/email-signature-management.html">team email signatures from one CSV</a> instead of asking everyone to copy a file.</p>
+                {h2('signature', 'Keep your email signature out of the template')}
+                <p>A template is the body of the email. Your signature should stay separate.</p>
+                {fig('../', 'images/guides/outlook-template-vs-signature.svg', 'Illustration of an email made from a template: the reusable body comes from the template and the signature is added by Outlook', 'The template holds the body; Outlook adds the signature.')}
+                <p>Paste your signature into a template and two things happen. If Outlook adds your signature automatically, you can end up with your sign-off twice. And every template freezes your signature as it was on the day you saved it: change your job title, phone number or logo, and you are editing every template one by one.</p>
+                <p>Set up your signature once in Outlook and let Outlook attach it. Our guide on <a href="how-to-create-an-email-signature-in-outlook.html">how to make an email signature in Outlook</a> covers every version, including adding a logo that does not turn into an attachment. If you would rather skip the signature editor, the <a href="../free-email-signature-generator.html">free email signature generator</a> builds an HTML signature you can paste straight in.</p>
+                {h2('mistakes', 'Common mistakes to avoid')}
+                <ul>
+                    <li><strong>Leaving placeholders in.</strong> Write them in capitals and brackets, like <code>[FIRST NAME]</code> or <code>[DATE]</code>. They are ugly on purpose, so you can't miss them before you hit Send.</li>
+                    <li><strong>Using My Templates for a formatted email.</strong> It stores plain text with basic styling. Tables and images belong in a Mail template.</li>
+                    <li><strong>Saving outdated attachments.</strong> A Mail template keeps the file from the day you saved it. Update the template when the price list changes, or attach the file fresh each time.</li>
+                    <li><strong>Vague names.</strong> “Template 3” means nothing in six weeks. Name templates by situation: “Quote follow-up, day 7” or “New client welcome”.</li>
+                </ul>'''
+TEMPLATE['faqs'] = [
+    ('Where are Outlook templates stored?', 'In classic Outlook for Windows, .oft files are saved in C:\\Users\\your username\\AppData\\Roaming\\Microsoft\\Templates. In new Outlook and Outlook on the web, Mail templates live in your mailbox under Settings, Mail, Templates, and My Templates snippets are saved to your primary mailbox.'),
+    ('Why can’t I find “Save as Outlook Template” in new Outlook?', 'New Outlook does not use File, Save As for templates. Use Mail template, Save email as template on the Message ribbon. If you need an .oft file, save the template first, then select Save as OFT in Settings, Mail, Templates.'),
+    ('Why is My Templates missing in Outlook?', 'Usually your organization has disabled Outlook add-ins. Ask your IT admin to enable it. Mail templates do not depend on the add-in, so you can use those in the meantime.'),
+    ('Can a template include a subject line?', 'Yes. A Mail template in new Outlook or on the web, or an .oft file in classic Outlook, saves the subject. A My Templates snippet does not, because it only stores body text.'),
+    ('Can I use Outlook templates on my phone?', 'Microsoft’s template instructions cover Outlook for Windows, Mac and the web. Create and manage your templates on desktop or in a browser.'),
+]
+TEMPLATE['related'] = []
+
+
 def build():
-    return [article_page(a) for a in (OUTLOOK, IPHONE, YAHOO, SIZE, SOCIAL)]
+    return [article_page(a) for a in (OUTLOOK, TEMPLATE, IPHONE, YAHOO, SIZE, SOCIAL)]

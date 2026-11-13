@@ -48,6 +48,7 @@ SIGNOFFS['article'] = f"""                {answer('<strong>Quick answer:</strong
                     <li><strong>No:</strong> first contact, job applications, complaints, legal or financial topics, bad news, and anyone senior you have not met.</li>
                 </ul>
                 <p>A good test: would you say the same line out loud to this person? If not, keep it professional.</p>
+                <p>Writing in December? Our <a href="../examples/holiday-email-signature.html">holiday email signature ideas</a> have seasonal greetings that work with clients too.</p>
                 {h2('classic', 'Professional sign-offs for everything else')}
                 <p>When in doubt, these never go wrong: <strong>Best regards</strong>, <strong>Kind regards</strong>, <strong>Best</strong>, <strong>Thanks</strong>, <strong>Thank you</strong>, <strong>Many thanks</strong>, <strong>Warm regards</strong> and <strong>Sincerely</strong> for formal letters. Put your sign-off on its own line, then your name, then your email signature.</p>
                 <h2>Make the rest of your signature just as memorable</h2>

@@ -17,8 +17,13 @@ Static HTML/CSS/JS marketing site for signtry.com (app: app.signtry.com).
 python tools/site/build.py       # rebuild generated pages
 python tools/site/sync_index.py  # copy navbar/footer into index.html
 python tools/site/check.py       # test, must exit 0
-python tools/site/sitemap.py     # regenerate sitemap.xml after adding pages
+python tools/site/sitemap.py     # regenerate sitemap.xml after adding pages (lastmod = git date)
+python tools/site/indexnow.py    # after deploy: ping Bing/Yandex with pages changed in last commit
 ```
+
+- Clean URLs (`vercel.json` cleanUrls): source paths keep `.html`, `layout.clean_urls()` strips it from links, canonical, og:url and JSON-LD. Never emit `.html` URLs.
+- Internal links: the Related block of every page comes from `tools/site/links.py` (`PAGES` + `RELATED`). Add each new page there.
+- Content plan and next topics: `docs/content-plan.md`.
 
 ## SEO
 Keyword from `generate_email_signature_green_kd.csv` in the title (≤ 60 chars), H1 and first paragraph. Meta description ≤ 155 chars. Add new pages to `sitemap.xml`.

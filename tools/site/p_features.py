@@ -1,4 +1,5 @@
 from layout import *
+from links import related
 
 
 def feature_page(f):
@@ -42,7 +43,7 @@ def feature_page(f):
             <div class="sec-head"><h2>Frequently asked questions</h2></div>
             {faq_html(f['faqs'])}
             <div class="sec-head" style="margin-top:96px"><h2>Keep exploring</h2></div>
-            {related_html(p, f['related'])}
+            {related_html(p, related(f['path'], f['related']))}
         </div>
     </section>
 

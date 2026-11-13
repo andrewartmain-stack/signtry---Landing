@@ -1,3 +1,10 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/posts/how-to-create-a-signature-in-gmail",
+      "destination": "/posts/how-to-create-an-email-signature-in-gmail",
+      "permanent": true
+    }
+  ]
 }

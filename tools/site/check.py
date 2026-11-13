@@ -54,6 +54,10 @@ for f, p in parsed.items():
         if u.scheme or r.startswith('mailto:'): continue
         path, frag = u.path, u.fragment
         target = os.path.normpath(os.path.join(base, path)) if path else f
+        # cleanUrls: "../pricing" serves pricing.html, "../" serves index.html
+        # (Vercel serves guides.html at /guides even though a guides/ folder exists)
+        if path and not path.endswith('/') and os.path.isfile(target + '.html'): target += '.html'
+        elif path and (path.endswith('/') or os.path.isdir(target)): target = os.path.join(target, 'index.html')
         if path and not os.path.exists(target): bad.append((f, r)); continue
         if frag:
             tp = parsed.get(target.replace(os.sep, '/'))

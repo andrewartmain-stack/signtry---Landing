@@ -5,6 +5,20 @@ SIGNUP = 'https://app.signtry.com/signup'
 LOGIN = 'https://app.signtry.com/login'
 TODAY = '2026-10-28'
 
+# vercel.json has cleanUrls: /pricing.html 308-redirects to /pricing. Emit the final URL everywhere
+# (links, canonical, og:url, JSON-LD) so nothing points at a redirect. Source paths keep .html.
+_ABS_INDEX = re.compile(r'(https://signtry\.com/(?:[^"\'\s<>#?]*/)?)index\.html')
+_ABS_HTML = re.compile(r'(https://signtry\.com/[^"\'\s<>#?]*?)\.html')
+_REL_INDEX = re.compile(r'href="((?:\.\./)*|\./)index\.html(#[^"]*)?"')
+_REL_HTML = re.compile(r'href="([^":#?"]*?)\.html(#[^"]*)?"')
+
+
+def clean_urls(s):
+    s = _ABS_INDEX.sub(r'\1', s)
+    s = _ABS_HTML.sub(r'\1', s)
+    s = _REL_INDEX.sub(lambda m: f'href="{m.group(1) or "./"}{m.group(2) or ""}"', s)
+    return _REL_HTML.sub(lambda m: f'href="{m.group(1)}{m.group(2) or ""}"', s)
+
 ICONS = {
     'chev': '<path d="m6 9 6 6 6-6"/>',
     'layout': '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/>',
@@ -247,8 +261,8 @@ def page(path, title, desc, body, schema, og_image='media/demo.jpg', extra_scrip
     depth = path.count('/')
     p = '../' * depth if depth else './'
     body = body.replace('{P}', p)
-    return (head(p, path, title, desc, schema, og_image) + '\n<body>\n' + nav(p) + '\n\n' + body + '\n\n' + footer(p) +
-            f'\n\n    <script src="{p}js/site.js"></script>\n{extra_script}</body>\n\n</html>\n')
+    return clean_urls(head(p, path, title, desc, schema, og_image) + '\n<body>\n' + nav(p) + '\n\n' + body + '\n\n' + footer(p) +
+                      f'\n\n    <script src="{p}js/site.js"></script>\n{extra_script}</body>\n\n</html>\n')
 
 
 def video(p, name, label, still=None):

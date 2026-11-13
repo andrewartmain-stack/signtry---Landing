@@ -1,5 +1,6 @@
 import os, json
 from layout import *
+from links import related as linked
 
 HERE = os.path.join(os.path.dirname(__file__), 'blog')
 
@@ -87,7 +88,7 @@ def post_page(x, ps):
     <section>
         <div class="wrap">
             <div class="sec-head"><h2>Keep reading</h2></div>
-            {related_html(p, related)}
+            {related_html(p, linked(path, related))}
         </div>
     </section>
 
