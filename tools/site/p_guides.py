@@ -87,7 +87,7 @@ OUTLOOK['article'] = f'''                {answer('<strong>Quick answer:</strong>
                 {steps(['Open the Outlook app and tap your profile picture at the top left.', 'Tap the <strong>Settings</strong> gear.', 'Tap <strong>Signature</strong>.', 'Replace the default text with your signature. Turn on <strong>Per account signature</strong> if you want a different one for each account.'])}
                 <p>The mobile app keeps signatures simple. Text and links work well; logos and complex layouts are best set up on desktop or web. Mobile and desktop signatures are separate, so set up both.</p>
                 {h2('change', 'How to change or edit your email signature in Outlook')}
-                <p>To change your email signature in Outlook, go back to the same place you created it: <strong>Settings → Account → Signatures</strong> in new Outlook and on the web, or <strong>File → Options → Mail → Signatures</strong> in classic Outlook. Select the signature from the list, edit it, and save. To update a new job title or phone number, edit the existing signature rather than creating a new one, so your default settings stay the same.</p>
+                <p>To change it later, go back to the same Signatures page, select the signature, edit it and save. Our step-by-step guide on <a href="how-to-change-email-signature-in-outlook.html">how to change your email signature in Outlook</a> covers every version and what to do when the old signature keeps appearing.</p>
                 <p>Sending the same email again and again? Save it once and reuse it: here is <a href="how-to-create-an-email-template-in-outlook.html">how to create an email template in Outlook</a>. Keep your signature out of the template, and Outlook adds the current one every time.</p>
                 {h2('image', 'How to add a logo or image to your Outlook signature')}
                 <p>In the signature editor, place your cursor where the image should go and use the <strong>image</strong> button in the toolbar (classic Outlook has an <strong>Insert Picture</strong> icon). Keep images small: a logo around 150–200 pixels wide and a headshot around 100 pixels square look sharp without making emails heavy. Our <a href="email-signature-size.html">email signature size guide</a> has exact dimensions.</p>
@@ -389,5 +389,70 @@ TEMPLATE['faqs'] = [
 TEMPLATE['related'] = []
 
 
+# ---------------------------------------------------------------- Change / edit Outlook signature
+CHANGE = dict(
+    path='guides/how-to-change-email-signature-in-outlook.html', crumb='Change Outlook signature', mins=7,
+    title='How to Change Your Email Signature in Outlook (2026)',
+    desc='How to change or edit your email signature in Outlook: new and classic Outlook, web, Mac and mobile, plus fixes when the old signature keeps showing up.',
+    h1='How to change your email signature in Outlook',
+    lead='Changing your email signature in Outlook takes under a minute once you know where the setting lives, and it lives somewhere different in every version. Here is how to change or edit your signature in new Outlook, classic Outlook, Outlook on the web, Outlook for Mac and the mobile app, and what to do when the old one refuses to go away.',
+)
+_MS_SIG = 'https://support.microsoft.com/en-us/office/create-an-email-signature-31fb24f9-e698-4789-b92a-f0e777f774ca'
+CHANGE['article'] = f'''                {answer('<strong>Quick answer:</strong> In new Outlook and Outlook on the web, select <strong>Settings → Accounts → Signatures</strong>, click the edit button next to your signature, make your changes and select <strong>Save</strong>. In classic Outlook for Windows, go to <strong>File → Options → Mail → Signatures</strong>, pick the signature, edit it in the <strong>Edit signature</strong> box and select <strong>OK</strong>.')}
+                {toc([('where', 'Where the signature setting lives'), ('new', 'New Outlook and Outlook on the web'), ('classic', 'Classic Outlook for Windows'), ('mac', 'Outlook for Mac'), ('mobile', 'iPhone and Android'), ('default', 'Change which signature is used'), ('one', 'Change it for one email only'), ('old', 'Old signature still showing?')])}
+                {h2('where', 'Where the signature setting lives in each Outlook')}
+                <p>Most “I can't find it” moments come from following steps written for a different Outlook. Check this table first:</p>
+                {table(['You use', 'Go to', 'Steps'], [
+    ['New Outlook for Windows (gear icon top right, no File tab)', '<strong>Settings → Accounts → Signatures</strong>', '<a href="#new">Steps</a>'],
+    ['Outlook on the web or Outlook.com', '<strong>Settings → Accounts → Signatures</strong>', '<a href="#new">Steps</a>'],
+    ['Classic Outlook for Windows (File tab in the ribbon)', '<strong>File → Options → Mail → Signatures</strong>', '<a href="#classic">Steps</a>'],
+    ['Outlook for Mac', '<strong>Outlook → Settings → Signatures</strong>', '<a href="#mac">Steps</a>'],
+    ['Outlook app on iPhone or Android', 'Profile picture → Settings gear → <strong>Signature</strong>', '<a href="#mobile">Steps</a>']])}
+                {h2('new', 'How to change your signature in new Outlook and Outlook on the web')}
+                <p>New Outlook for Windows, Outlook on the web and Outlook.com share the same settings page, so these steps work in all three.</p>
+                {steps(['Select the <strong>Settings</strong> gear at the top right.', 'Go to <strong>Accounts → Signatures</strong>.', 'If you have more than one email account, pick the right one at the top of the page.', 'Select the <strong>edit</strong> (pencil) button next to the signature you want to change.', 'Change the text, links or image in the editor, then select <strong>Save</strong>.'])}
+                <p>To replace a signature completely, it is often faster to paste a new one over the old text than to edit line by line. A signature built in the <a href="../free-email-signature-generator.html">free email signature generator</a> pastes in with its layout, photo and links intact.</p>
+                {callout('Using both Outlook on the web and the Outlook desktop app with a personal Microsoft account? Microsoft notes you may need to set up the signature in both, so check each one after you change it.')}
+                {h2('classic', 'How to change your signature in classic Outlook for Windows')}
+                {steps(['Select <strong>File → Options → Mail</strong>.', 'Select <strong>Signatures…</strong>.', 'Under <strong>Select signature to edit</strong>, click the signature you want to change.', 'Make your changes in the <strong>Edit signature</strong> box. Use the image button to swap a logo or photo.', 'Select <strong>Save</strong>, then <strong>OK</strong>.'])}
+                <p>Shortcut: while writing an email, select <strong>Message → Signature → Signatures…</strong> to open the same window without leaving the draft.</p>
+                <p>Classic Outlook can store signatures on the computer itself. If you use Outlook on two PCs, a change on one may not appear on the other, so open the Signatures window on each machine and check.</p>
+                {h2('mac', 'How to change your signature in Outlook for Mac')}
+                {steps(['Open Outlook and choose <strong>Outlook → Settings</strong> in the menu bar.', 'Select <strong>Signatures</strong>.', 'Pick the signature in the list and edit it on the right.', 'Close the window. Outlook for Mac saves the change automatically.'])}
+                <p>Under <strong>Default signatures</strong> in the same window you choose which signature each account uses for new messages and for replies.</p>
+                {h2('mobile', 'How to change your signature in the Outlook app on iPhone and Android')}
+                {steps(['Open the Outlook app and tap your profile picture at the top left.', 'Tap the <strong>Settings</strong> gear.', 'Tap <strong>Signature</strong> (in some versions it sits under <strong>Mail</strong>).', 'Edit the text. Turn on <strong>Per account signature</strong> if each address needs its own.'])}
+                <p>The app keeps its own signature, separate from desktop and web, and it is built for plain text and links. If your phone still says “Get Outlook for iOS”, this is where you replace it. Using Apple Mail instead? See <a href="how-to-change-email-signature-on-iphone.html">how to change your email signature on iPhone</a>.</p>
+                {h2('default', 'How to change which signature Outlook uses')}
+                <p>Sometimes the signature is fine and Outlook simply picks the wrong one. New messages and replies are separate settings:</p>
+                <ul>
+                    <li><strong>New Outlook and the web:</strong> on <strong>Settings → Accounts → Signatures</strong>, set <strong>For new messages</strong> and <strong>For replies and forwards</strong>, then select <strong>Save</strong>.</li>
+                    <li><strong>Classic Outlook:</strong> in the Signatures window, under <strong>Choose default signature</strong>, pick the account and set <strong>New messages</strong> and <strong>Replies/forwards</strong>.</li>
+                </ul>
+                <p>A common setup is a full signature for new emails and a two-line version for replies, so a long thread doesn't repeat your logo twenty times.</p>
+                {h2('one', 'How to change your signature for one email only')}
+                <p>No need to touch the settings for a one-off. Open the draft, select <strong>Signature</strong> on the <strong>Message</strong> (or <strong>Insert</strong>) tab and pick a different saved signature. Outlook swaps it in that email only. If you send the same email often, save it as a template too: here is <a href="how-to-create-an-email-template-in-outlook.html">how to create an email template in Outlook</a>.</p>
+                {h2('old', 'Changed your signature but the old one still shows up?')}
+                <p>You saved the change, sent a test, and there it is: last year's job title. These are the usual causes, roughly in order of how often they bite:</p>
+                <ul>
+                    <li><strong>You edited a different account.</strong> Each account has its own signatures and defaults. Check the account at the top of the Signatures page matches the one in your <strong>From</strong> field.</li>
+                    <li><strong>The draft was already open.</strong> Outlook adds the signature when the message is created. Close the draft and start a new one.</li>
+                    <li><strong>Another device or app still has the old one.</strong> The mobile app, Outlook for Mac and classic Outlook on a second PC can each keep their own copy. Microsoft's roaming signatures store signatures in the mailbox for Microsoft 365 and Outlook.com accounts in recent Outlook for Windows builds; POP, IMAP and on-premises Exchange accounts do not roam.</li>
+                    <li><strong>Your company adds the signature.</strong> If IT adds signatures on the mail server, recipients see that one no matter what you set in Outlook, and you won't see it in Sent Items. Ask IT to update it.</li>
+                    <li><strong>You are looking at an old thread.</strong> Earlier replies keep the signature they were sent with. Only new messages get the new one.</li>
+                </ul>
+                <p>If images break after the change, check their size and format in our <a href="email-signature-size.html">email signature size guide</a>.</p>
+                <h2>Change it once, for everyone</h2>
+                <p>Editing one signature is quick. Editing fifteen, one laptop at a time, is how teams end up with three versions of the company phone number. With <a href="../features/email-signature-management.html">team signatures from a CSV</a>, you update the design once and everyone gets a matching signature to paste into Outlook. New to Outlook signatures altogether? Start with <a href="how-to-create-an-email-signature-in-outlook.html">how to make an email signature in Outlook</a>.</p>'''
+CHANGE['faqs'] = [
+    ('How do I edit my signature in Outlook?', 'In new Outlook or Outlook on the web, select Settings, Accounts, Signatures, click the edit button next to the signature and select Save when you are done. In classic Outlook, go to File, Options, Mail, Signatures, select the signature and edit it in the Edit signature box.'),
+    ('Why won’t my new signature show up in Outlook?', 'Usually the change was made on a different account, the draft was opened before the change, or another device still uses its own copy. If your company adds signatures on the mail server, only IT can change what recipients see.'),
+    ('How do I change my signature in Outlook 365?', 'Outlook in Microsoft 365 uses the new Outlook settings: Settings, Accounts, Signatures. Edit the signature, set it as the default for new messages and replies, and select Save.'),
+    ('Can I use a different signature for replies?', 'Yes. Set one signature for new messages and another, usually shorter, for replies and forwards. Both settings are on the same Signatures page.'),
+    ('How do I change my Outlook signature on my phone?', 'In the Outlook app, tap your profile picture, the Settings gear and then Signature. The app signature is separate from the desktop and web signature, so change it there too.'),
+]
+CHANGE['related'] = []
+
+
 def build():
-    return [article_page(a) for a in (OUTLOOK, TEMPLATE, IPHONE, YAHOO, SIZE, SOCIAL)]
+    return [article_page(a) for a in (OUTLOOK, TEMPLATE, CHANGE, IPHONE, YAHOO, SIZE, SOCIAL)]

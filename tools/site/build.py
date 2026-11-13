@@ -7,6 +7,7 @@ ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.abspath(os.path.join(os.pat
 
 HUB_PATH = 'guides.html'
 GUIDES = [('Outlook', 'How to make an email signature in Outlook', 'guides/how-to-create-an-email-signature-in-outlook.html'),
+          ('Outlook', 'How to change your email signature in Outlook', 'guides/how-to-change-email-signature-in-outlook.html'),
           ('Outlook', 'How to create an email template in Outlook', 'guides/how-to-create-an-email-template-in-outlook.html'),
           ('Gmail', 'How to create an email signature in Gmail', 'posts/how-to-create-an-email-signature-in-gmail.html'),
           ('iPhone &amp; Mac', 'How to change your email signature on iPhone', 'guides/how-to-change-email-signature-on-iphone.html'),

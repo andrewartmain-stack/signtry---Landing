@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 os.chdir(ROOT)
-VOID = {'img', 'br', 'meta', 'link', 'input', 'source', 'path', 'circle', 'rect', 'stop', 'hr', 'polyline', 'line'}
+VOID = {'img', 'br', 'wbr', 'meta', 'link', 'input', 'source', 'path', 'circle', 'rect', 'stop', 'hr', 'polyline', 'line'}
 
 
 class P(HTMLParser):

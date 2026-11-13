@@ -6,7 +6,7 @@ Status: `todo` → `planned 2026-wNN` → `published YYYY-MM-DD`. Check Search C
 
 | # | Page | Type | Main keywords (volume / KD) | Cluster vol | Status |
 |---|---|---|---|---|---|
-| 1 | How to change or edit your email signature in Outlook | new guide | how to edit signature in outlook 4,400/29 · how to change your email signature in outlook 2,400/28 · how do i change my email signature in outlook 1,900/28 | ~35,700 | todo |
+| 1 | How to change or edit your email signature in Outlook | new guide | how to edit signature in outlook 4,400/29 · how to change your email signature in outlook 2,400/28 · how do i change my email signature in outlook 1,900/28 | ~35,700 | planned 2026-w46 |
 | 2 | Refresh: How to create an email signature in Outlook (+ Outlook 365 section) | update existing | how to create email signature in outlook 3,600/23 · how to create signature in outlook 365 1,300/17 | ~7,000 | todo |
 | 3 | Email signature block: examples and how to add one | new guide | email signature block examples 1,300/27 · signature blocks 720/26 · how to add a signature block in outlook 590/19 | ~6,500 | todo |
 | 4 | Animated GIF email signature | new guide | signature gif 880/17 · animated email signature 320/24 · animated gif signature 260/8 | ~3,950 | todo |

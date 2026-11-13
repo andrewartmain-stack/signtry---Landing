@@ -9,6 +9,7 @@ PAGES = {
     # install guides
     'guides/how-to-create-an-email-signature-in-outlook.html': ('Guide', 'How to make an email signature in Outlook'),
     'guides/how-to-create-an-email-template-in-outlook.html': ('Guide', 'How to create an email template in Outlook'),
+    'guides/how-to-change-email-signature-in-outlook.html': ('Guide', 'How to change your email signature in Outlook'),
     'posts/how-to-create-an-email-signature-in-gmail.html': ('Guide', 'How to create an email signature in Gmail'),
     'guides/how-to-change-email-signature-on-iphone.html': ('Guide', 'How to change your email signature on iPhone'),
     'guides/how-to-change-signature-in-yahoo-mail.html': ('Guide', 'How to change your signature in Yahoo Mail'),
@@ -37,6 +38,7 @@ PAGES = {
 
 _OUTLOOK = 'guides/how-to-create-an-email-signature-in-outlook.html'
 _TEMPLATE = 'guides/how-to-create-an-email-template-in-outlook.html'
+_CHANGE = 'guides/how-to-change-email-signature-in-outlook.html'
 _GMAIL = 'posts/how-to-create-an-email-signature-in-gmail.html'
 _IPHONE = 'guides/how-to-change-email-signature-on-iphone.html'
 _YAHOO = 'guides/how-to-change-signature-in-yahoo-mail.html'
@@ -59,8 +61,9 @@ _FREE = 'free-email-signature-generator.html'
 _PRICING = 'pricing.html'
 
 RELATED = {
-    _OUTLOOK: [_TEMPLATE, _GMAIL, _IPHONE, _YAHOO, _SIZE, _F_HTML],
-    _TEMPLATE: [_OUTLOOK, _GMAIL, _IPHONE, _F_TEAM, _F_TPL, _EXAMPLES],
+    _OUTLOOK: [_CHANGE, _TEMPLATE, _GMAIL, _IPHONE, _SIZE, _F_HTML],
+    _CHANGE: [_OUTLOOK, _TEMPLATE, _IPHONE, _F_TEAM, _SIZE, _GMAIL],
+    _TEMPLATE: [_OUTLOOK, _CHANGE, _GMAIL, _F_TEAM, _F_TPL, _EXAMPLES],
     _GMAIL: [_OUTLOOK, _TEMPLATE, _IPHONE, _YAHOO, _SIZE, _F_HTML],
     _IPHONE: [_OUTLOOK, _GMAIL, _YAHOO, _F_HTML, _SIZE, _FONTS],
     _YAHOO: [_OUTLOOK, _GMAIL, _IPHONE, _EXAMPLES, _SIZE, _F_HTML],
@@ -78,7 +81,7 @@ RELATED = {
     _F_GEN: [_F_TPL, _OUTLOOK, _ICONS, _SIZE, _FONTS, _FREE],
     _F_TEAM: [_PRICING, _EXAMPLES, _REALTY, _F_STATS, _TEACHER, _TEMPLATE],
     _F_STATS: [_F_GEN, _EXAMPLES, _PRICING, _ICONS, _F_TEAM, _REALTY],
-    _F_HTML: [_OUTLOOK, _IPHONE, _YAHOO, _GMAIL, _SIZE, _F_GEN],
+    _F_HTML: [_OUTLOOK, _CHANGE, _IPHONE, _YAHOO, _GMAIL, _SIZE],
 }
 
 
